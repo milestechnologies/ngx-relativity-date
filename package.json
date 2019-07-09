@@ -1,5 +1,5 @@
 {
-    "name": "ngx-package-starter",
+    "name": "ngx-date-module",
     "version": "0.0.1",
     "private": true,
     "scripts": {
@@ -11,7 +11,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/milestechnologies/ngx-package-starter"
+        "url": "https://github.com/milestechnologies/ngx-date-module"
     },
     "author": {
         "name": "milesdevservices",
@@ -28,7 +28,7 @@
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/milestechnologies/ngx-package-starter/issues"
+        "url": "https://github.com/milestechnologies/ngx-date-module/issues"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.13.0",

@@ -1,23 +1,13 @@
 import { NgModule } from '@angular/core';
-import { MtDate } from './date.library';
+import { CommonModule } from '@angular/common';
 
-declare global {
-    // tslint:disable-next-line: interface-name
-    interface Date {
-        mtDate: MtDate;
-    }
-}
-Object.defineProperty(Date.prototype, 'mtDate', {
-    get: function(): MtDate {
-        return new MtDate(this, true);
-    },
-});
-
-@NgModule({})
-export class MtDateModule {
+@NgModule({
+    imports: [CommonModule],
+})
+export class NgxDateModule {
     static forRoot(): any {
         return {
-            ngModule: MtDateModule,
+            ngModule: NgxDateModule,
         };
     }
 }
