@@ -1,0 +1,33 @@
+{
+    "name": "ngx-package-starter",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/milestechnologies/ngx-package-starter"
+    },
+    "author": {
+        "name": "milesdevservices",
+        "email": "devservices@milestechnologies.com"
+    },
+    "keywords": [
+        "angular"
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/milestechnologies/ngx-package-starter/issues"
+    },
+    "ngPackage": {
+        "lib": {
+            "entryFile": "public_api.ts"
+        },
+        "dest": "../dist"
+    },
+    "main": "ngx-package-starter.umd.js",
+    "module": "ngx-package-starter.js",
+    "jsnext:main": "ngx-package-starter.js",
+    "typings": "ngx-package-starter.d.ts",
+    "peerDependencies": {
+        "@angular/core": "^7.2.11",
+        "@angular/common": "^7.2.11"
+    }
+}
