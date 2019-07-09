@@ -1,3 +1,3 @@
 export const environment = {
-    appName: 'ngx-package-starter demo site',
+    appName: 'ngx-date-module demo site',
 };
