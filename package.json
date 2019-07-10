@@ -21,7 +21,7 @@
         "angular"
     ],
     "prettier": {
-        "trailingComma": "all",
+        "trailingComma": "none",
         "singleQuote": true,
         "tabWidth": 4,
         "arrowParens": "always"

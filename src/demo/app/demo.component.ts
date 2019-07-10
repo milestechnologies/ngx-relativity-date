@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
     template: `
@@ -10,6 +11,7 @@ import { Component } from '@angular/core';
                 contained in comments in the code sample
             </p>
         </div>
+
         <button class="btn btn-primary">
             button here
         </button>
