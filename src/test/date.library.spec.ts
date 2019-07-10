@@ -1,6 +1,6 @@
 import {} from 'jasmine';
 import { async } from '@angular/core/testing';
-import { MtDate, DateParts } from './date.library';
+import { MtDate, DateParts } from '../date.library';
 import { isMoment } from 'moment';
 
 function getJanuaryFirst2018StartingDate(): Date {
@@ -20,6 +20,9 @@ describe('date.libary', () => {
     const thirtyMinutesMore = new Date(2018, 1, 1, 0, 30);
     const tenSecondsMore = new Date(2018, 1, 1, 0, 0, 10);
     const nineMillisecondsMore = new Date(2018, 1, 1, 0, 0, 0, 9);
+    const fourQuartersMore = new Date (2019, 1, 1);
+    const twoWeeksmore = new Date(2018, 1, 15);
+    const yaDefault = new Date (2018, 1, 1);
     const septemberTwentyFifth2018 = getSeptemberTwentyFifth2018StartingDate();
     const twoYearsLess = new Date(2016, 9, 25);
     const fourMonthsLess = new Date(2018, 5, 25);
@@ -45,9 +48,21 @@ describe('date.libary', () => {
                 expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
             });
 
+            it('should add quarters but not change startingDate', () => {
+                const value = mtDate.add(4, DateParts.quarters).date;
+                expect(value.getTime()).toBe(fourQuartersMore.getTime());
+                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+            });
+
             it('should add months but not change startingDate', () => {
                 const value = mtDate.add(4, DateParts.months).date;
                 expect(value.getTime()).toBe(fourMonthsMore.getTime());
+                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+            });
+
+            it('should add weeks but not change startingDate', () => {
+                const value = mtDate.add(2, DateParts.weeks).date;
+                expect(value.getTime()).toBe(twoWeeksmore.getTime());
                 expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
             });
 
@@ -78,6 +93,12 @@ describe('date.libary', () => {
             it('should add milliseconds but not change startingDate', () => {
                 const value = mtDate.add(9, DateParts.milliseconds).date;
                 expect(value.getTime()).toBe(nineMillisecondsMore.getTime());
+                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+            });
+
+            it('should add default but not change startingDate', () => {
+                const value = mtDate.add(0, null).date;
+                expect(value.getTime()).toBe(yaDefault.getTime());
                 expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
             });
         });
@@ -268,10 +289,10 @@ describe('date.libary', () => {
 
         // CCC 9-5-2018: this test was removed, because it gets different
         // answers based on local versus server time.
-        // it('should return default format when no param passed', () => {
-        //     const value = mtDate.format();
-        //     expect(value).toBe('2018-10-25T00:00:00-04:00');
-        // });
+        it('should return default format when no param passed', () => {
+            const value = mtDate.format();
+            expect(value).toContain('2018-10-25T00:00:00');
+        });
 
         it('should return custom format when param passed', () => {
             const value = mtDate.format('ddd, hA');
@@ -333,6 +354,17 @@ describe('date.libary', () => {
         it('should be a Moment object', () => {
             const value = mtDate.toMoment();
             expect(isMoment(value)).toBe(true);
+        });
+    });
+
+    describe('without dateValue', () => {
+        beforeEach(() => {
+            mtDate = new MtDate(null, false);
+        });
+
+        it('should get new date', () => {
+
+            expect(mtDate.date).not.toBeNull();
         });
     });
 });
