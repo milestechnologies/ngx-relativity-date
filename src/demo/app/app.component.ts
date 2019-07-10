@@ -15,6 +15,12 @@ import { Component } from '@angular/core';
                         routerLinkActive="active"
                         >demo</a
                     >
+                    <a
+                        class="nav-link"
+                        routerLink="/getdate"
+                        routerLinkActive="active"
+                        >Date Retrieval</a
+                    >
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -64,7 +70,7 @@ import { Component } from '@angular/core';
                 </div>
             </div>
         </nav>
-    `,
+    `
 })
 export class AppComponent {
     constructor() {}
