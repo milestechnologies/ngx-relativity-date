@@ -1,0 +1,24 @@
+<div class="jumbotron demo-description-block">
+    <h4><em>How it works</em></h4>
+    <p>
+        NPM moment allows you to access a lot of useful data, for example,
+        retrieving the date! Pressing the button below will utilize the moment()
+        function to retrieve the current date. Try it for yourself!
+        <br />
+        <br />
+        Please note: All that is required to change the format of the date is a
+        small modification to order highlighted in the gold code down below!
+    </p>
+</div>
+
+<hr />
+<h4><em>Retrieve the date!</em></h4>
+
+<button (click)="alertMessage()" class="btn btn-primary">
+    Get Todays Date!
+</button>
+
+<br />
+<pre style>
+    <code class="highcodeblock" [highlight]="dateRetrieval"></code>
+</pre>
