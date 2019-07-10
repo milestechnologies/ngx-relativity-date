@@ -8,6 +8,33 @@ import { AppComponent } from './app.component';
 import { DemoComponent } from './demo.component';
 import { TestComponent } from './components/test.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxDateModule } from '../../../dist';
+const dateModuleConfig: {} = {
+    customWorkWeek: {
+        monday: {
+            start: 9,
+            end: 17
+        },
+        tuesday: {
+            start: 9,
+            end: 17
+        },
+        wednesday: {
+            start: 9,
+            end: 17
+        },
+        thursday: {
+            start: 9,
+            end: 17
+        },
+        friday: {
+            start: 9,
+            end: 17
+        },
+        saturday: null,
+        sunday: null
+    }
+};
 import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval.component';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
@@ -35,7 +62,8 @@ export function hljsLanguages(): any {
         ReactiveFormsModule,
         HighlightModule.forRoot({
             languages: hljsLanguages
-        })
+        }),
+        NgxDateModule.forRoot(dateModuleConfig)
     ],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
