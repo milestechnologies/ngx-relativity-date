@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MtDate } from '../../../date.library';
+import { Component, OnInit, Inject } from '@angular/core';
+import { NgxDateModule, MtDate } from '../../../../dist';
 // import * as moment from 'moment';
 
 @Component({
@@ -13,10 +13,13 @@ export class TestComponent implements OnInit {
     someText: string;
 
     constructor() {}
+    // @Inject('config') private config: any
 
     ngOnInit(): void {
-        let date = new MtDate();
+        let date = new Date();
         console.log(date);
-        this.someText = date.toMoment().toISOString();
+        this.someText = date.mtDate.toMoment().toISOString();
+
+        console.log(date.mtDate.getConfig());
     }
 }

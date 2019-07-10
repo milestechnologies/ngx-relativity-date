@@ -10,7 +10,7 @@ export enum DateParts {
     hours,
     minutes,
     seconds,
-    milliseconds,
+    milliseconds
 }
 
 type momentDatePart = 'y' | 'Q' | 'M' | 'w' | 'd' | 'h' | 'm' | 's' | 'ms';
@@ -27,6 +27,7 @@ export interface IMtDate {
 
 export class MtDate implements IMtDate {
     date: Date;
+    customConfig: any;
 
     /**
      * Create an MtDate object
@@ -34,10 +35,7 @@ export class MtDate implements IMtDate {
      * @param asReference boolean flag indicating whether the dateParam should be handled
      * as a reference object.  Defaults to false.
      */
-    constructor(
-        dateParam?: Date,
-        asReference = false,
-    ) {
+    constructor(dateParam?: Date, asReference = false, customConfig?: any) {
         let dateValue: Date;
         if (!dateParam) {
             dateValue = new Date();
@@ -48,6 +46,11 @@ export class MtDate implements IMtDate {
             dateValue = dateParam;
         }
         this.date = dateValue;
+        this.customConfig = customConfig;
+    }
+
+    getConfig(): any {
+        return this.customConfig;
     }
 
     /**
@@ -56,7 +59,9 @@ export class MtDate implements IMtDate {
      * @param part date part enumerator specifying which part of the date to add to.
      */
     add(amount: number, part: DateParts): MtDate {
-        const date = moment(this.date).add(amount, this.getMomentDatePart(part)).toDate();
+        const date = moment(this.date)
+            .add(amount, this.getMomentDatePart(part))
+            .toDate();
         this.setThisDate(date);
         return this;
     }
@@ -67,7 +72,9 @@ export class MtDate implements IMtDate {
      * @param part date part enumerator specifying which part of the date to subtract from.
      */
     subtract(amount: number, part: DateParts): MtDate {
-        const date = moment(this.date).subtract(amount, this.getMomentDatePart(part)).toDate();
+        const date = moment(this.date)
+            .subtract(amount, this.getMomentDatePart(part))
+            .toDate();
         this.setThisDate(date);
         return this;
     }
