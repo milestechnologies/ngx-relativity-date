@@ -1,3 +1,7 @@
+import {
+    IDateModuleConfiguration,
+    defaultDateModuleConfig
+} from './default_configuration';
 import * as momentImported from 'moment';
 const moment = momentImported;
 
@@ -27,7 +31,7 @@ export interface IMtDate {
 
 export class MtDate implements IMtDate {
     date: Date;
-    customConfig: any;
+    config: IDateModuleConfiguration;
 
     /**
      * Create an MtDate object
@@ -35,7 +39,11 @@ export class MtDate implements IMtDate {
      * @param asReference boolean flag indicating whether the dateParam should be handled
      * as a reference object.  Defaults to false.
      */
-    constructor(dateParam?: Date, asReference = false, customConfig?: any) {
+    constructor(
+        dateParam?: Date,
+        asReference = false,
+        customConfig?: IDateModuleConfiguration
+    ) {
         let dateValue: Date;
         if (!dateParam) {
             dateValue = new Date();
@@ -46,11 +54,16 @@ export class MtDate implements IMtDate {
             dateValue = dateParam;
         }
         this.date = dateValue;
-        this.customConfig = customConfig;
+        if (customConfig) {
+            this.config = customConfig;
+        } else {
+            this.config = defaultDateModuleConfig;
+        }
     }
 
+    // returns the configuration object of this MtDate
     getConfig(): any {
-        return this.customConfig;
+        return this.config;
     }
 
     /**
@@ -159,23 +172,18 @@ export class MtDate implements IMtDate {
     }
 
     isDuringWorkHours(): boolean {
-        if (this.customConfig.customWorkWeek) {
-            let testMoment = this.toMoment();
-            if (
-                testMoment.hour() >=
-                    this.customConfig.customWorkWeek[testMoment.weekday()]
-                        .start &&
-                testMoment.hour() <=
-                    this.customConfig.customWorkWeek[testMoment.weekday()].end
-            ) {
-                console.log('you should be at work right now!');
-                return true;
-            } else {
-                console.log('take a load off, go home and relax!');
-                return false;
-            }
+        let testMoment = this.toMoment();
+        if (
+            testMoment.hour() >=
+                this.config.customWorkWeek[testMoment.weekday()].start &&
+            testMoment.hour() <=
+                this.config.customWorkWeek[testMoment.weekday()].end
+        ) {
+            console.log('you should be at work right now!');
+            return true;
+        } else {
+            console.log('take a load off, go home and relax!');
+            return false;
         }
-        // defaults to true TODO
-        return true;
     }
 }

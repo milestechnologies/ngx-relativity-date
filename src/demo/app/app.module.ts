@@ -8,31 +8,10 @@ import { AppComponent } from './app.component';
 import { DemoComponent } from './demo.component';
 import { TestComponent } from './components/test.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NgxDateModule } from '../../../dist';
-export interface IDateModuleConfiguration {
-    customWorkWeek?: [
-        // weekday indexed from 0 -> 6 / Sun -> Sat
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number }
-    ];
-}
-const emptyConfig: IDateModuleConfiguration = {};
-const dateModuleConfig: IDateModuleConfiguration = {
-    customWorkWeek: [
-        { start: null, end: null },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: null, end: null }
-    ]
-};
+import { NgxDateModule, IDateModuleConfiguration } from '../../../dist';
+
+const myCustomConfiguration: IDateModuleConfiguration = {}; // TODO
+
 import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval.component';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
@@ -61,8 +40,8 @@ export function hljsLanguages(): any {
         HighlightModule.forRoot({
             languages: hljsLanguages
         }),
-        NgxDateModule.forRoot(dateModuleConfig)
-        // NgxDateModule.forRoot(emptyConfig)
+        // NgxDateModule.forRoot(myCustomConfiguration)
+        NgxDateModule.forRoot()
     ],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
 })

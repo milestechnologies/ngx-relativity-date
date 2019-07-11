@@ -1,7 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { NgxDateModule } from '../../../../dist'; // , MtDate
-import { MtDate } from '../../../date.library'; // only for TESTING so I don't have to run build every time
-// import * as moment from 'moment';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-test',

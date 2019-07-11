@@ -13,16 +13,18 @@ declare global {
     imports: [CommonModule]
 })
 export class NgxDateModule {
-    static forRoot(customWorkWeek?: any): any {
+    static forRoot(customConfiguration?: any): any {
         Object.defineProperty(Date.prototype, 'mtDate', {
             get: function(): MtDate {
-                return new MtDate(this, true, customWorkWeek);
+                return new MtDate(this, true, customConfiguration);
             }
         });
-        if (customWorkWeek) {
+        if (customConfiguration) {
             return {
                 ngModule: NgxDateModule,
-                providers: [{ provide: 'config', useValue: customWorkWeek }]
+                providers: [
+                    { provide: 'config', useValue: customConfiguration }
+                ]
             };
         }
         return {
