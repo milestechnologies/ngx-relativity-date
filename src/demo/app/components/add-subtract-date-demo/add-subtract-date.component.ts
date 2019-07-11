@@ -36,9 +36,6 @@ export class AddSubtractDateComponent {
         const quantity = this.quantityForm.value.key3;
         if (quantity > 100 || quantity < 0) {
                 alert('Pick a number less than 100 and greater than 0');
-                this.quantityForm.value.key3 = '';
-                this.addSubSelect.value.key1 = '';
-                this.enumForm.value.key2 = '';
                 return;
         }
         if (which === 'add') {
