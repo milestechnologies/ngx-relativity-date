@@ -1,12 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { NgxDateModule, MtDate } from '../../../../dist';
+import { NgxDateModule } from '../../../../dist'; // , MtDate
+import { MtDate } from '../../../date.library'; // only for TESTING so I don't have to run build every time
 // import * as moment from 'moment';
 
 @Component({
     selector: 'app-test',
     template: `
         <h4><em>TestComponent!</em></h4>
-        {{ someText }}
+        <br />
+        <label>is this time during work hours?</label>
+        <p>{{ someText }}</p>
     `
 })
 export class TestComponent implements OnInit {
@@ -16,10 +19,11 @@ export class TestComponent implements OnInit {
     // @Inject('config') private config: any
 
     ngOnInit(): void {
-        let date = new Date();
+        let date = new Date().mtDate;
         console.log(date);
-        this.someText = date.mtDate.toMoment().toISOString();
+        console.log(date.getConfig());
 
-        console.log(date.mtDate.getConfig());
+        this.someText =
+            date.toMoment().toISOString() + ' :: ' + date.isDuringWorkHours();
     }
 }

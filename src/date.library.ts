@@ -157,4 +157,25 @@ export class MtDate implements IMtDate {
     toMoment(): momentImported.Moment {
         return moment(this.date);
     }
+
+    isDuringWorkHours(): boolean {
+        if (this.customConfig.customWorkWeek) {
+            let testMoment = this.toMoment();
+            if (
+                testMoment.hour() >=
+                    this.customConfig.customWorkWeek[testMoment.weekday()]
+                        .start &&
+                testMoment.hour() <=
+                    this.customConfig.customWorkWeek[testMoment.weekday()].end
+            ) {
+                console.log('you should be at work right now!');
+                return true;
+            } else {
+                console.log('take a load off, go home and relax!');
+                return false;
+            }
+        }
+        // defaults to true TODO
+        return true;
+    }
 }
