@@ -21,6 +21,12 @@ import { Component } from '@angular/core';
                         routerLinkActive="active"
                         >Date Retrieval</a
                     >
+                    <a
+                        class="nav-link"
+                        routerLink="/addsubdemo"
+                        routerLinkActive="active"
+                        >Add/Subtract To Date</a
+                    >
                     <button
                         class="navbar-toggler"
                         type="button"

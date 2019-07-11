@@ -16,7 +16,7 @@ moment(new Date()).format('MM/DD/YYYY')`;
 
     alertMessage(): void {
         alert(
-            'Todays date is ' + moment(new Date()).format('MM/DD/YYYY') + '!'
+            'Todays date is ' + moment(new Date()).format('MM/DD/YYYY/') + '!'
         );
     }
 }

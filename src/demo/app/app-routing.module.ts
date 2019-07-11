@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DemoComponent } from './demo.component';
 import { TestComponent } from './components/test.component';
 import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval.component';
+import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
 
 const appRoutes: Routes = [
     {
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
     {
         component: SimpleDateRetrievalComponent,
         path: 'getdate'
+    },
+    {
+        component: AddSubtractDateComponent,
+        path: 'addsubdemo'
     },
     {
         component: DemoComponent,
