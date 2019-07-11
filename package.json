@@ -1,5 +1,5 @@
 {
-    "name": "ngx-package-starter",
+    "name": "ngx-date-module",
     "version": "0.0.1",
     "private": true,
     "scripts": {
@@ -11,7 +11,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/milestechnologies/ngx-package-starter"
+        "url": "https://github.com/milestechnologies/ngx-date-module"
     },
     "author": {
         "name": "milesdevservices",
@@ -21,14 +21,14 @@
         "angular"
     ],
     "prettier": {
-        "trailingComma": "all",
+        "trailingComma": "none",
         "singleQuote": true,
         "tabWidth": 4,
         "arrowParens": "always"
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/milestechnologies/ngx-package-starter/issues"
+        "url": "https://github.com/milestechnologies/ngx-date-module/issues"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.13.0",
@@ -47,6 +47,7 @@
         "classlist.js": "^1.1.20150312",
         "codelyzer": "4.5.0",
         "font-awesome": "^4.7.0",
+        "highlight.js": "^9.15.8",
         "jasmine-core": "~2.99.1",
         "jasmine-spec-reporter": "~4.2.1",
         "karma": "^4.1.0",
@@ -58,6 +59,7 @@
         "karma-sourcemap-loader": "^0.3.7",
         "karma-spec-reporter": "0.0.32",
         "ng-packagr": "^5.0.0",
+        "ngx-highlightjs": "^3.0.3",
         "rxjs": "^6.4.0",
         "tslib": "^1.9.0",
         "tslint": "~5.7.0",
@@ -67,5 +69,8 @@
     },
     "engines": {
         "node": ">=6.0.0"
+    },
+    "dependencies": {
+        "moment": "^2.24.0"
     }
 }

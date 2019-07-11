@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "ngx-package-starter": {
+        "ngx-date-module": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -45,21 +45,21 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "ngx-package-starter:build"
+                        "browserTarget": "ngx-date-module:build"
                     },
                     "configurations": {
                         "prod": {
-                            "browserTarget": "ngx-package-starter:build:prod"
+                            "browserTarget": "ngx-date-module:build:prod"
                         },
                         "production": {
-                            "browserTarget": "ngx-package-starter:build:production"
+                            "browserTarget": "ngx-date-module:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "ngx-package-starter:build"
+                        "browserTarget": "ngx-date-module:build"
                     }
                 },
                 "test": {
@@ -74,7 +74,8 @@
                         "assets": [],
                         "codeCoverageExclude": [
                             "src/demo/**.*",
-                            "src/test/**.*"
+                            "src/test/**.*",
+                            "src/index.ts"
                         ]
                     }
                 },
@@ -90,7 +91,7 @@
                 }
             }
         },
-        "ngx-package-starter-e2e": {
+        "ngx-date-module-e2e": {
             "root": "e2e",
             "sourceRoot": "e2e",
             "projectType": "application",
@@ -99,7 +100,7 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "./protractor.conf.js",
-                        "devServerTarget": "ngx-package-starter:serve"
+                        "devServerTarget": "ngx-date-module:serve"
                     }
                 },
                 "lint": {
@@ -112,7 +113,7 @@
             }
         }
     },
-    "defaultProject": "ngx-package-starter",
+    "defaultProject": "ngx-date-module",
     "schematics": {
         "@schematics/angular:component": {
             "styleext": "css"

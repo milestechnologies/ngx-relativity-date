@@ -7,3 +7,17 @@
     padding-top: 25px;
     padding-bottom: 10px;
 }
+.highcodeblock.hljs {
+    background: #e9ecef;
+    padding: 0;
+    margin-bottom: -30px;
+}
+.highcodeblock .hljs-comment {
+    color: #1fad3c;
+}
+.highcodeblock .hljs-string {
+    color: #ad801f;
+}
+.highcodeblock .hljs-keyword {
+    color: #a81c1c;
+}

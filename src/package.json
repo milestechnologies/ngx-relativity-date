@@ -1,9 +1,9 @@
 {
-    "name": "ngx-package-starter",
+    "name": "ngx-date-module",
     "version": "0.0.1",
     "repository": {
         "type": "git",
-        "url": "https://github.com/milestechnologies/ngx-package-starter"
+        "url": "https://github.com/milestechnologies/ngx-date-module"
     },
     "author": {
         "name": "milesdevservices",
@@ -14,7 +14,7 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/milestechnologies/ngx-package-starter/issues"
+        "url": "https://github.com/milestechnologies/ngx-date-module/issues"
     },
     "ngPackage": {
         "lib": {
@@ -22,10 +22,10 @@
         },
         "dest": "../dist"
     },
-    "main": "ngx-package-starter.umd.js",
-    "module": "ngx-package-starter.js",
-    "jsnext:main": "ngx-package-starter.js",
-    "typings": "ngx-package-starter.d.ts",
+    "main": "ngx-date-module.umd.js",
+    "module": "ngx-date-module.js",
+    "jsnext:main": "ngx-date-module.js",
+    "typings": "ngx-date-module.d.ts",
     "peerDependencies": {
         "@angular/core": "^7.2.11",
         "@angular/common": "^7.2.11"
