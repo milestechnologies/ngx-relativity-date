@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MtDate } from './date.library';
+import { IDateModuleConfiguration } from './default_configuration';
 
 declare global {
     // tslint:disable-next-line: interface-name
@@ -13,13 +14,14 @@ declare global {
     imports: [CommonModule]
 })
 export class NgxDateModule {
-    static forRoot(customConfiguration?: any): any {
+    static forRoot(customConfiguration?: IDateModuleConfiguration): any {
         Object.defineProperty(Date.prototype, 'mtDate', {
             get: function(): MtDate {
                 return new MtDate(this, true, customConfiguration);
             }
         });
         if (customConfiguration) {
+            console.log('custom configuration file detected');
             return {
                 ngModule: NgxDateModule,
                 providers: [
@@ -27,6 +29,9 @@ export class NgxDateModule {
                 ]
             };
         }
+        console.log(
+            'no custom configuration file detected - using default configuration'
+        );
         return {
             ngModule: NgxDateModule
         };
