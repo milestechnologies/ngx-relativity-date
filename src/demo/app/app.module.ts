@@ -15,6 +15,7 @@ const myCustomConfiguration: IDateModuleConfiguration = {}; // TODO
 import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval.component';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
 
 export function hljsLanguages(): any {
     return [
@@ -29,7 +30,8 @@ export function hljsLanguages(): any {
         AppComponent,
         DemoComponent,
         TestComponent,
-        SimpleDateRetrievalComponent
+        SimpleDateRetrievalComponent,
+        AddSubtractDateComponent
     ],
     imports: [
         BrowserModule,

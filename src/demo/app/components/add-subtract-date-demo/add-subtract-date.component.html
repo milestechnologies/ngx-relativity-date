@@ -1,0 +1,70 @@
+<div class="jumbotron demo-description-block">
+    <h4><em>How it works</em></h4>
+    <p>
+        ngx-date-module contains methods for adding and subtracting different
+        measures of time to prexisting dates (could apply to a day, a week, a
+        month, or even a minute, second, or hour).
+    </p>
+</div>
+<br />
+
+<label></label>
+<p>{{ currentDate.mtDate.format('MM/DD/YYYY') }}</p>
+
+<div class="row">
+    <div class="col-sm-3" ng-controller="AddSubController">
+        <form [formGroup]="addSubSelect">
+            <label for="addSubSelect"> I'd like to: </label><br />
+            <select
+                name="key1selector"
+                formControlName="key1"
+                ng-model="data.addSubSelect"
+            >
+                <option value="">---Please select---</option>
+                <option value="add">Add To Date</option>
+                <option value="sub">Subtract From Date</option>
+            </select>
+            <br />
+        </form>
+    </div>
+    <br />
+    <div class="col-sm-3">
+        <form [formGroup]="enumForm">
+            <label for="enumForm"> Date Type: </label><br />
+            <select
+                name="key2selector"
+                formControlName="key2"
+                ng-model="data.addSubSelect"
+            >
+                <option value="">---Please select---</option>
+                <option [ngValue]="0">Year</option>
+                <option [ngValue]="1">Quarter</option>
+                <option [ngValue]="2">Month</option>
+                <option [ngValue]="3">Week</option>
+                <option [ngValue]="4">Day</option>
+            </select>
+            <br />
+        </form>
+    </div>
+    <br />
+    <div class="col-sm-3">
+        <form [formGroup]="quantityForm">
+            <label
+                >Quantity:
+                <input
+                    type="number"
+                    name="quantity"
+                    min="1"
+                    max="100"
+                    formControlName="key3"
+                />
+            </label>
+        </form>
+    </div>
+    <br />
+    <div class="col-sm-3">
+        <button class="btn btn-primary" (click)="addOrSubtract()">
+            Submit!
+        </button>
+    </div>
+</div>
