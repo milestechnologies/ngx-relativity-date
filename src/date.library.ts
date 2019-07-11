@@ -172,12 +172,11 @@ export class MtDate implements IMtDate {
     }
 
     isDuringWorkHours(): boolean {
-        let testMoment = this.toMoment();
+        let thisMoment = this.toMoment();
         if (
-            testMoment.hour() >=
-                this.config.customWorkWeek[testMoment.weekday()].start &&
-            testMoment.hour() <=
-                this.config.customWorkWeek[testMoment.weekday()].end
+            thisMoment.hour() >=
+                this.config.workWeek[thisMoment.weekday()].start &&
+            thisMoment.hour() <= this.config.workWeek[thisMoment.weekday()].end
         ) {
             console.log('you should be at work right now!');
             return true;
@@ -185,5 +184,33 @@ export class MtDate implements IMtDate {
             console.log('take a load off, go home and relax!');
             return false;
         }
+    }
+
+    howLongUntilNextHoliday(): Date {
+        let thisMoment = this.toMoment();
+        for (let holiday of this.config.holidays) {
+            let nextOcc = this.getNextOccurenceOfDate(
+                holiday.month,
+                holiday.day
+            );
+        }
+        return new Date();
+    }
+
+    // build Date obj of the next occurence of the next month/day combination after the current day
+    getNextOccurenceOfDate(month: number, day: number): Date {
+        let thisMoment = this.toMoment();
+        let this_year = new Date(thisMoment.year(), month, day);
+        let next_year = new Date(thisMoment.year() + 1, month, day);
+        // console.log(this_year);
+        // console.log(next_year);
+        if (thisMoment.month() < month) {
+            return this_year;
+        } else {
+            if (thisMoment.month() === month && thisMoment.day() < day) {
+                return this_year;
+            }
+        }
+        return next_year;
     }
 }
