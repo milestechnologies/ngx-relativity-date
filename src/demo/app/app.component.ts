@@ -27,6 +27,12 @@ import { Component } from '@angular/core';
                         routerLinkActive="active"
                         >Add/Subtract to Date and Time</a
                     >
+                    <a
+                        class="nav-link"
+                        routerLink="/timedesc"
+                        routerLinkActive="active"
+                        >Descriptions</a
+                    >
                     <button
                         class="navbar-toggler"
                         type="button"
