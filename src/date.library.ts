@@ -171,11 +171,19 @@ export class MtDate implements IMtDate {
         return moment(this.date);
     }
 
+    // helper functions to allow us to quickly check against the date object to see which date comes first
+    isBeforeDate(date: Date): boolean {
+        return this.toMoment().diff(date.mtDate.toMoment()) < 0;
+    }
+    isAfterDate(date: Date): boolean {
+        return this.toMoment().diff(date.mtDate.toMoment()) > 0;
+    }
+
     isDuringWorkHours(): boolean {
         let thisMoment = this.toMoment();
         if (
             thisMoment.hour() >=
-            this.config.workWeek[thisMoment.weekday()].start &&
+                this.config.workWeek[thisMoment.weekday()].start &&
             thisMoment.hour() <= this.config.workWeek[thisMoment.weekday()].end
         ) {
             console.log('you should be at work right now!');
@@ -187,14 +195,19 @@ export class MtDate implements IMtDate {
     }
 
     howLongUntilNextHoliday(): Date {
-        let thisMoment = this.toMoment();
+        let retDate = new Date();
+        let firstElement = true;
         for (let holiday of this.config.holidays) {
             let nextOcc = this.getNextOccurenceOfDate(
                 holiday.month,
                 holiday.day
             );
+            if (firstElement || retDate.mtDate.isAfterDate(nextOcc)) {
+                retDate = nextOcc;
+                firstElement = false;
+            }
         }
-        return new Date();
+        return retDate;
     }
 
     // build Date obj of the next occurence of the next month/day combination after the current day
@@ -214,28 +227,29 @@ export class MtDate implements IMtDate {
         return next_year;
     }
 
-    // three levels of importance 1,2,3
-    importance(level: number): string {
-        let priority: string;
-        if (level < 1 ) {
-            priority = 'No Importance';
+    // designed to one-line adding/subtracting multiple date parts / values to a date obj
+    addFullDate(date: Date): MtDate {
+        if (date.getFullYear() !== 0) {
+            this.add(date.getFullYear(), DateParts.years);
         }
-        if (level === 1) {
-            priority = 'Some Importance';
+        if (date.getMonth() !== 0) {
+            this.add(date.getMonth(), DateParts.months);
         }
-        if (level === 2) {
-            priority = 'Very Important';
+        if (date.getDate() !== 0) {
+            this.add(date.getDate(), DateParts.days);
         }
-        if (level === 3) {
-            priority = 'Extremely Important';
+        if (date.getHours() !== 0) {
+            this.add(date.getHours(), DateParts.hours);
         }
-        return priority;
+        if (date.getMinutes() !== 0) {
+            this.add(date.getMinutes(), DateParts.minutes);
+        }
+        if (date.getSeconds() !== 0) {
+            this.add(date.getSeconds(), DateParts.seconds);
+        }
+        if (date.getMilliseconds() !== 0) {
+            this.add(date.getMilliseconds(), DateParts.milliseconds);
+        }
+        return this;
     }
-    description (newDate: Date, reason: string, priority: number): string {
-        let descript: string;
-        descript = 'On ' + newDate + reason + `
-        Priority: ` + this.importance(priority);
-        return descript;
-    }
-
 }
