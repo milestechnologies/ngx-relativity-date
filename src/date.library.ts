@@ -175,7 +175,7 @@ export class MtDate implements IMtDate {
         let thisMoment = this.toMoment();
         if (
             thisMoment.hour() >=
-                this.config.workWeek[thisMoment.weekday()].start &&
+            this.config.workWeek[thisMoment.weekday()].start &&
             thisMoment.hour() <= this.config.workWeek[thisMoment.weekday()].end
         ) {
             console.log('you should be at work right now!');
@@ -213,4 +213,29 @@ export class MtDate implements IMtDate {
         }
         return next_year;
     }
+
+    // three levels of importance 1,2,3
+    importance(level: number): string {
+        let priority: string;
+        if (level < 1 ) {
+            priority = 'No Importance';
+        }
+        if (level === 1) {
+            priority = 'Some Importance';
+        }
+        if (level === 2) {
+            priority = 'Very Important';
+        }
+        if (level === 3) {
+            priority = 'Extremely Important';
+        }
+        return priority;
+    }
+    description (newDate: Date, reason: string, priority: number): string {
+        let descript: string;
+        descript = 'On ' + newDate + reason + `
+        Priority: ` + this.importance(priority);
+        return descript;
+    }
+
 }
