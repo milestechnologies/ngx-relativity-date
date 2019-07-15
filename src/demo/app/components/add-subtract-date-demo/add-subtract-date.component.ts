@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     templateUrl: './add-subtract-date.component.html'
 })
 export class AddSubtractDateComponent {
+    //controls adding to date
     currentDate = new Date();
     addSubSelect = new FormGroup({
         key1: new FormControl('', [Validators.required])
@@ -15,6 +16,18 @@ export class AddSubtractDateComponent {
     });
     quantityForm = new FormGroup({
         key3: new FormControl('', [Validators.required])
+    });
+
+    //controls adding to time
+    currentTime = new Date();
+    addSubTimeSelect = new FormGroup({
+        keyTime1: new FormControl('', [Validators.required])
+    });
+    enumTimeForm = new FormGroup({
+        keyTime2: new FormControl('', [Validators.required])
+    });
+    timeQuantityForm = new FormGroup({
+        keyTime3: new FormControl('', [Validators.required])
     });
 
     constructor() {}
@@ -46,7 +59,34 @@ export class AddSubtractDateComponent {
             this.currentDate.mtDate.subtract(quantity, part);
         }
     }
-    setDate(): void {
-        this.currentDate = new Date();
+
+    addOrSubtractTime(): void {
+        if (
+            !this.addSubTimeSelect.valid ||
+            !this.enumTimeForm.valid ||
+            !this.timeQuantityForm.valid
+        ) {
+            alert('Please fill out all boxes');
+            return;
+        }
+        // this is the add or subtract
+        const which = this.addSubTimeSelect.value.keyTime1;
+        // this is the parts in add
+        const part = this.enumTimeForm.value.keyTime2;
+        console.log(part);
+        // this is the amount
+        const quantity = this.timeQuantityForm.value.keyTime3;
+        console.log(quantity);
+
+        if (which === 'add') {
+            console.log(quantity, part);
+            this.currentTime.mtDate.add(quantity, part);
+            console.log(this.currentTime.mtDate);
+        }
+
+        if (which === 'sub') {
+            this.currentTime.mtDate.subtract(quantity, part);
+            console.log(this.currentTime.mtDate);
+        }
     }
 }
