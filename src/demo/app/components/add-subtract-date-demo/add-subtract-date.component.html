@@ -68,3 +68,68 @@
         </button>
     </div>
 </div>
+
+<br />
+<br />
+<br />
+<br />
+
+<label></label>
+<p>{{ currentTime.mtDate.format('h:mm.ss.ms a') }}</p>
+
+<div class="row">
+    <div class="col-sm-3" ng-controller="AddSubTimeController">
+        <form [formGroup]="addSubTimeSelect">
+            <label for="addSubTimeSelect"> I'd like to: </label><br />
+            <select
+                name="key1Timeselector"
+                formControlName="keyTime1"
+                ng-model="data.addSubTimeSelect"
+            >
+                <option value="">---Please select---</option>
+                <option value="add">Add To Time</option>
+                <option value="sub">Subtract From Time</option>
+            </select>
+            <br />
+        </form>
+    </div>
+    <br />
+    <div class="col-sm-3">
+        <form [formGroup]="enumTimeForm">
+            <label for="enumTimeForm"> Time Type: </label><br />
+            <select
+                name="key2Timeselector"
+                formControlName="keyTime2"
+                ng-model="data.addSubTimeSelect"
+            >
+                <option value="">---Please select---</option>
+                <option [ngValue]="5">Hours</option>
+                <option [ngValue]="6">Minutes</option>
+                <option [ngValue]="7">Seconds</option>
+                <option [ngValue]="8">Milliseconds</option>
+            </select>
+            <br />
+        </form>
+    </div>
+    <br />
+    <div class="col-sm-3">
+        <form [formGroup]="timeQuantityForm">
+            <label
+                >Quantity:
+                <input
+                    type="number"
+                    name="quantity"
+                    min="1"
+                    max="100"
+                    formControlName="keyTime3"
+                />
+            </label>
+        </form>
+    </div>
+    <br />
+    <div class="col-sm-3">
+        <button class="btn btn-primary" (click)="addOrSubtractTime()">
+            Submit!
+        </button>
+    </div>
+</div>
