@@ -171,6 +171,14 @@ export class MtDate implements IMtDate {
         return moment(this.date);
     }
 
+    // helper functions to allow us to quickly check against the date object to see which date comes first
+    isBeforeDate(date: Date): boolean {
+        return this.toMoment().diff(date.mtDate.toMoment()) < 0;
+    }
+    isAfterDate(date: Date): boolean {
+        return this.toMoment().diff(date.mtDate.toMoment()) > 0;
+    }
+
     isDuringWorkHours(): boolean {
         let thisMoment = this.toMoment();
         if (
@@ -187,14 +195,19 @@ export class MtDate implements IMtDate {
     }
 
     howLongUntilNextHoliday(): Date {
-        let thisMoment = this.toMoment();
+        let retDate = new Date();
+        let firstElement = true;
         for (let holiday of this.config.holidays) {
             let nextOcc = this.getNextOccurenceOfDate(
                 holiday.month,
                 holiday.day
             );
+            if (firstElement || retDate.mtDate.isAfterDate(nextOcc)) {
+                retDate = nextOcc;
+                firstElement = false;
+            }
         }
-        return new Date();
+        return retDate;
     }
 
     // build Date obj of the next occurence of the next month/day combination after the current day
@@ -212,5 +225,31 @@ export class MtDate implements IMtDate {
             }
         }
         return next_year;
+    }
+
+    // designed to one-line adding/subtracting multiple date parts / values to a date obj
+    addFullDate(date: Date): MtDate {
+        if (date.getFullYear() !== 0) {
+            this.add(date.getFullYear(), DateParts.years);
+        }
+        if (date.getMonth() !== 0) {
+            this.add(date.getMonth(), DateParts.months);
+        }
+        if (date.getDate() !== 0) {
+            this.add(date.getDate(), DateParts.days);
+        }
+        if (date.getHours() !== 0) {
+            this.add(date.getHours(), DateParts.hours);
+        }
+        if (date.getMinutes() !== 0) {
+            this.add(date.getMinutes(), DateParts.minutes);
+        }
+        if (date.getSeconds() !== 0) {
+            this.add(date.getSeconds(), DateParts.seconds);
+        }
+        if (date.getMilliseconds() !== 0) {
+            this.add(date.getMilliseconds(), DateParts.milliseconds);
+        }
+        return this;
     }
 }
