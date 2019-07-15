@@ -16,6 +16,7 @@ import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
 import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
+import { TimeDescriptionComponent } from './components/time-description-demo/time-description.component';
 
 export function hljsLanguages(): any {
     return [
@@ -31,7 +32,8 @@ export function hljsLanguages(): any {
         DemoComponent,
         TestComponent,
         SimpleDateRetrievalComponent,
-        AddSubtractDateComponent
+        AddSubtractDateComponent,
+        TimeDescriptionComponent
     ],
     imports: [
         BrowserModule,

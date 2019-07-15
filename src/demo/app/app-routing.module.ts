@@ -4,6 +4,7 @@ import { DemoComponent } from './demo.component';
 import { TestComponent } from './components/test.component';
 import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval.component';
 import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
+import { TimeDescriptionComponent } from './components/time-description-demo/time-description.component';
 
 const appRoutes: Routes = [
     {
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
     {
         component: AddSubtractDateComponent,
         path: 'addsubdemo'
+    },
+    {
+        component: TimeDescriptionComponent,
+        path: 'timedesc'
     },
     {
         component: DemoComponent,
