@@ -3,6 +3,7 @@ import {
     defaultDateModuleConfig
 } from './default-configuration.library';
 import * as momentImported from 'moment';
+import { TimeChunk } from './time-chunk.library';
 const moment = momentImported;
 
 export enum DateParts {
@@ -233,15 +234,7 @@ export class MtDate implements IMtDate {
 
     // designed to one-line adding/subtracting multiple date parts / values
     // to a date obj
-    addFullDate(data: {
-        year?: number;
-        month?: number;
-        day?: number;
-        hour?: number;
-        minute?: number;
-        second?: number;
-        millisecond?: number;
-    }): MtDate {
+    addFullDate(data: TimeChunk): MtDate {
         if (data.year !== null && data.year !== 0) {
             this.add(data.year, DateParts.years);
         }
@@ -265,15 +258,7 @@ export class MtDate implements IMtDate {
         }
         return this;
     }
-    subtractFullDate(data: {
-        year?: number;
-        month?: number;
-        day?: number;
-        hour?: number;
-        minute?: number;
-        second?: number;
-        millisecond?: number;
-    }): MtDate {
+    subtractFullDate(data: TimeChunk): MtDate {
         if (data.year !== null && data.year !== 0) {
             this.subtract(data.year, DateParts.years);
         }
