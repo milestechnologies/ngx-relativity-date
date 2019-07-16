@@ -1,3 +1,7 @@
+import {
+    IDateModuleConfiguration,
+    defaultDateModuleConfig
+} from './default_configuration';
 import * as momentImported from 'moment';
 const moment = momentImported;
 
@@ -27,7 +31,7 @@ export interface IMtDate {
 
 export class MtDate implements IMtDate {
     date: Date;
-    customConfig: any;
+    config: IDateModuleConfiguration;
 
     /**
      * Create an MtDate object
@@ -35,7 +39,11 @@ export class MtDate implements IMtDate {
      * @param asReference boolean flag indicating whether the dateParam should be handled
      * as a reference object.  Defaults to false.
      */
-    constructor(dateParam?: Date, asReference = false, customConfig?: any) {
+    constructor(
+        dateParam?: Date,
+        asReference = false,
+        customConfig?: IDateModuleConfiguration
+    ) {
         let dateValue: Date;
         if (!dateParam) {
             dateValue = new Date();
@@ -46,11 +54,16 @@ export class MtDate implements IMtDate {
             dateValue = dateParam;
         }
         this.date = dateValue;
-        this.customConfig = customConfig;
+        if (customConfig) {
+            this.config = customConfig;
+        } else {
+            this.config = defaultDateModuleConfig;
+        }
     }
 
+    // returns the configuration object of this MtDate
     getConfig(): any {
-        return this.customConfig;
+        return this.config;
     }
 
     /**
@@ -156,5 +169,87 @@ export class MtDate implements IMtDate {
      */
     toMoment(): momentImported.Moment {
         return moment(this.date);
+    }
+
+    // helper functions to allow us to quickly check against the date object to see which date comes first
+    isBeforeDate(date: Date): boolean {
+        return this.toMoment().diff(date.mtDate.toMoment()) < 0;
+    }
+    isAfterDate(date: Date): boolean {
+        return this.toMoment().diff(date.mtDate.toMoment()) > 0;
+    }
+
+    isDuringWorkHours(): boolean {
+        let thisMoment = this.toMoment();
+        if (
+            thisMoment.hour() >=
+                this.config.workWeek[thisMoment.weekday()].start &&
+            thisMoment.hour() <= this.config.workWeek[thisMoment.weekday()].end
+        ) {
+            console.log('you should be at work right now!');
+            return true;
+        } else {
+            console.log('take a load off, go home and relax!');
+            return false;
+        }
+    }
+
+    howLongUntilNextHoliday(): Date {
+        let retDate = new Date();
+        let firstElement = true;
+        for (let holiday of this.config.holidays) {
+            let nextOcc = this.getNextOccurenceOfDate(
+                holiday.month,
+                holiday.day
+            );
+            if (firstElement || retDate.mtDate.isAfterDate(nextOcc)) {
+                retDate = nextOcc;
+                firstElement = false;
+            }
+        }
+        return retDate;
+    }
+
+    // build Date obj of the next occurence of the next month/day combination after the current day
+    getNextOccurenceOfDate(month: number, day: number): Date {
+        let thisMoment = this.toMoment();
+        let this_year = new Date(thisMoment.year(), month, day);
+        let next_year = new Date(thisMoment.year() + 1, month, day);
+        // console.log(this_year);
+        // console.log(next_year);
+        if (thisMoment.month() < month) {
+            return this_year;
+        } else {
+            if (thisMoment.month() === month && thisMoment.day() < day) {
+                return this_year;
+            }
+        }
+        return next_year;
+    }
+
+    // designed to one-line adding/subtracting multiple date parts / values to a date obj
+    addFullDate(date: Date): MtDate {
+        if (date.getFullYear() !== 0) {
+            this.add(date.getFullYear(), DateParts.years);
+        }
+        if (date.getMonth() !== 0) {
+            this.add(date.getMonth(), DateParts.months);
+        }
+        if (date.getDate() !== 0) {
+            this.add(date.getDate(), DateParts.days);
+        }
+        if (date.getHours() !== 0) {
+            this.add(date.getHours(), DateParts.hours);
+        }
+        if (date.getMinutes() !== 0) {
+            this.add(date.getMinutes(), DateParts.minutes);
+        }
+        if (date.getSeconds() !== 0) {
+            this.add(date.getSeconds(), DateParts.seconds);
+        }
+        if (date.getMilliseconds() !== 0) {
+            this.add(date.getMilliseconds(), DateParts.milliseconds);
+        }
+        return this;
     }
 }

@@ -8,36 +8,15 @@ import { AppComponent } from './app.component';
 import { DemoComponent } from './demo.component';
 import { TestComponent } from './components/test.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NgxDateModule } from '../../../dist';
-const dateModuleConfig: {} = {
-    customWorkWeek: {
-        monday: {
-            start: 9,
-            end: 17
-        },
-        tuesday: {
-            start: 9,
-            end: 17
-        },
-        wednesday: {
-            start: 9,
-            end: 17
-        },
-        thursday: {
-            start: 9,
-            end: 17
-        },
-        friday: {
-            start: 9,
-            end: 17
-        },
-        saturday: null,
-        sunday: null
-    }
-};
+import { NgxDateModule, IDateModuleConfiguration } from '../../../dist';
+
+const myCustomConfiguration: IDateModuleConfiguration = {}; // TODO
+
 import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval.component';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
+import { TimeDescriptionComponent } from './components/time-description-demo/time-description.component';
 
 export function hljsLanguages(): any {
     return [
@@ -52,7 +31,9 @@ export function hljsLanguages(): any {
         AppComponent,
         DemoComponent,
         TestComponent,
-        SimpleDateRetrievalComponent
+        SimpleDateRetrievalComponent,
+        AddSubtractDateComponent,
+        TimeDescriptionComponent
     ],
     imports: [
         BrowserModule,
@@ -63,7 +44,8 @@ export function hljsLanguages(): any {
         HighlightModule.forRoot({
             languages: hljsLanguages
         }),
-        NgxDateModule.forRoot(dateModuleConfig)
+        // NgxDateModule.forRoot(myCustomConfiguration)
+        NgxDateModule.forRoot()
     ],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
