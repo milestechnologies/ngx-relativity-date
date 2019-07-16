@@ -1,7 +1,7 @@
 import {
     IDateModuleConfiguration,
     defaultDateModuleConfig
-} from './default_configuration';
+} from './default-configuration.library';
 import * as momentImported from 'moment';
 const moment = momentImported;
 
@@ -171,7 +171,8 @@ export class MtDate implements IMtDate {
         return moment(this.date);
     }
 
-    // helper functions to allow us to quickly check against the date object to see which date comes first
+    // helper functions to allow us to quickly check against the date
+    // object to see which date comes first
     isBeforeDate(date: Date): boolean {
         return this.toMoment().diff(date.mtDate.toMoment()) < 0;
     }
@@ -179,6 +180,8 @@ export class MtDate implements IMtDate {
         return this.toMoment().diff(date.mtDate.toMoment()) > 0;
     }
 
+    // returns whether this date is within the work hours defined
+    // by the config
     isDuringWorkHours(): boolean {
         let thisMoment = this.toMoment();
         if (
@@ -186,31 +189,32 @@ export class MtDate implements IMtDate {
                 this.config.workWeek[thisMoment.weekday()].start &&
             thisMoment.hour() <= this.config.workWeek[thisMoment.weekday()].end
         ) {
-            console.log('you should be at work right now!');
+            // console.log('you should be at work right now!');
             return true;
         } else {
-            console.log('take a load off, go home and relax!');
+            // console.log('take a load off, go home and relax!');
             return false;
         }
     }
 
-    howLongUntilNextHoliday(): Date {
+    // determines the next holiday and returns the string from
+    // calling .to(next occurence of holiday)
+    howLongUntilNextHoliday(): string {
         let retDate = new Date();
         let firstElement = true;
+        let nextOcc: Date;
         for (let holiday of this.config.holidays) {
-            let nextOcc = this.getNextOccurenceOfDate(
-                holiday.month,
-                holiday.day
-            );
+            nextOcc = this.getNextOccurenceOfDate(holiday.month, holiday.day);
             if (firstElement || retDate.mtDate.isAfterDate(nextOcc)) {
                 retDate = nextOcc;
                 firstElement = false;
             }
         }
-        return retDate;
+        return this.to(nextOcc);
     }
 
-    // build Date obj of the next occurence of the next month/day combination after the current day
+    // build Date obj of the next occurence of the next month/day combination
+    // after the current day
     getNextOccurenceOfDate(month: number, day: number): Date {
         let thisMoment = this.toMoment();
         let this_year = new Date(thisMoment.year(), month, day);
@@ -227,28 +231,69 @@ export class MtDate implements IMtDate {
         return next_year;
     }
 
-    // designed to one-line adding/subtracting multiple date parts / values to a date obj
-    addFullDate(date: Date): MtDate {
-        if (date.getFullYear() !== 0) {
-            this.add(date.getFullYear(), DateParts.years);
+    // designed to one-line adding/subtracting multiple date parts / values
+    // to a date obj
+    addFullDate(data: {
+        year?: number;
+        month?: number;
+        day?: number;
+        hour?: number;
+        minute?: number;
+        second?: number;
+        millisecond?: number;
+    }): MtDate {
+        if (data.year !== null && data.year !== 0) {
+            this.add(data.year, DateParts.years);
         }
-        if (date.getMonth() !== 0) {
-            this.add(date.getMonth(), DateParts.months);
+        if (data.month !== null && data.month !== 0) {
+            this.add(data.month, DateParts.months);
         }
-        if (date.getDate() !== 0) {
-            this.add(date.getDate(), DateParts.days);
+        if (data.day !== null && data.day !== 0) {
+            this.add(data.day, DateParts.days);
         }
-        if (date.getHours() !== 0) {
-            this.add(date.getHours(), DateParts.hours);
+        if (data.hour !== null && data.hour !== 0) {
+            this.add(data.hour, DateParts.hours);
         }
-        if (date.getMinutes() !== 0) {
-            this.add(date.getMinutes(), DateParts.minutes);
+        if (data.minute !== null && data.minute !== 0) {
+            this.add(data.minute, DateParts.minutes);
         }
-        if (date.getSeconds() !== 0) {
-            this.add(date.getSeconds(), DateParts.seconds);
+        if (data.second !== null && data.second !== 0) {
+            this.add(data.second, DateParts.seconds);
         }
-        if (date.getMilliseconds() !== 0) {
-            this.add(date.getMilliseconds(), DateParts.milliseconds);
+        if (data.millisecond !== null && data.millisecond !== 0) {
+            this.add(data.millisecond, DateParts.milliseconds);
+        }
+        return this;
+    }
+    subtractFullDate(data: {
+        year?: number;
+        month?: number;
+        day?: number;
+        hour?: number;
+        minute?: number;
+        second?: number;
+        millisecond?: number;
+    }): MtDate {
+        if (data.year !== null && data.year !== 0) {
+            this.subtract(data.year, DateParts.years);
+        }
+        if (data.month !== null && data.month !== 0) {
+            this.subtract(data.month, DateParts.months);
+        }
+        if (data.day !== null && data.day !== 0) {
+            this.subtract(data.day, DateParts.days);
+        }
+        if (data.hour !== null && data.hour !== 0) {
+            this.subtract(data.hour, DateParts.hours);
+        }
+        if (data.minute !== null && data.minute !== 0) {
+            this.subtract(data.minute, DateParts.minutes);
+        }
+        if (data.second !== null && data.second !== 0) {
+            this.subtract(data.second, DateParts.seconds);
+        }
+        if (data.millisecond !== null && data.millisecond !== 0) {
+            this.subtract(data.millisecond, DateParts.milliseconds);
         }
         return this;
     }
