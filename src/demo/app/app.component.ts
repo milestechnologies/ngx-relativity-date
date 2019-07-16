@@ -29,6 +29,12 @@ import { Component } from '@angular/core';
                     >
                     <a
                         class="nav-link"
+                        routerLink="/tofrom"
+                        routerLinkActive="active"
+                        >To-From Demo</a
+                    >
+                    <a
+                        class="nav-link"
                         routerLink="/formatswitch"
                         routerLinkActive="active"
                         >Format</a

@@ -16,7 +16,9 @@ import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
 import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
 import { TimeDescriptionComponent } from './components/time-description-demo/time-description.component';
+import { ToFromComponent } from './components/to-from-demo/to-from.component';
 import { FormatSwitchComponent } from './components/format-switch-demo/format-switch-demo.component';
+
 
 export function hljsLanguages(): any {
     return [
@@ -33,6 +35,7 @@ export function hljsLanguages(): any {
         SimpleDateRetrievalComponent,
         AddSubtractDateComponent,
         TimeDescriptionComponent,
+        ToFromComponent,
         FormatSwitchComponent
     ],
     imports: [
