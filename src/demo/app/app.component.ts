@@ -33,6 +33,12 @@ import { Component } from '@angular/core';
                         routerLinkActive="active"
                         >Descriptions</a
                     >
+                    <a
+                        class="nav-link"
+                        routerLink="/tofrom"
+                        routerLinkActive="active"
+                        >To-From Demo</a
+                    >
                     <button
                         class="navbar-toggler"
                         type="button"
