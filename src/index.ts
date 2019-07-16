@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MtDate } from './date.library';
-import { IDateModuleConfiguration } from './default_configuration';
+import { IDateModuleConfiguration } from './default-configuration.library';
 
 declare global {
     // tslint:disable-next-line: interface-name

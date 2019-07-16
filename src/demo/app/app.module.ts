@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightModule } from 'ngx-highlightjs';
 import { AppComponent } from './app.component';
-import { DemoComponent } from './demo.component';
 import { TestComponent } from './components/test.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxDateModule, IDateModuleConfiguration } from '../../../dist';
@@ -18,6 +17,8 @@ import xml from 'highlight.js/lib/languages/xml';
 import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
 import { TimeDescriptionComponent } from './components/time-description-demo/time-description.component';
 import { ToFromComponent } from './components/to-from-demo/to-from.component';
+import { FormatSwitchComponent } from './components/format-switch-demo/format-switch-demo.component';
+
 
 export function hljsLanguages(): any {
     return [
@@ -30,12 +31,12 @@ export function hljsLanguages(): any {
     bootstrap: [AppComponent],
     declarations: [
         AppComponent,
-        DemoComponent,
         TestComponent,
         SimpleDateRetrievalComponent,
         AddSubtractDateComponent,
         TimeDescriptionComponent,
-        ToFromComponent
+        ToFromComponent,
+        FormatSwitchComponent
     ],
     imports: [
         BrowserModule,
