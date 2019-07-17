@@ -11,12 +11,6 @@ import { Component } from '@angular/core';
                     >
                     <a
                         class="nav-link"
-                        routerLink="/demo"
-                        routerLinkActive="active"
-                        >demo</a
-                    >
-                    <a
-                        class="nav-link"
                         routerLink="/getdate"
                         routerLinkActive="active"
                         >Date Retrieval</a
@@ -32,6 +26,18 @@ import { Component } from '@angular/core';
                         routerLink="/timedesc"
                         routerLinkActive="active"
                         >Descriptions</a
+                    >
+                    <a
+                        class="nav-link"
+                        routerLink="/tofrom"
+                        routerLinkActive="active"
+                        >To-From Demo</a
+                    >
+                    <a
+                        class="nav-link"
+                        routerLink="/formatswitch"
+                        routerLinkActive="active"
+                        >Format</a
                     >
                     <button
                         class="navbar-toggler"

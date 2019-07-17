@@ -18,14 +18,10 @@ export class TestComponent implements OnInit {
     ngOnInit(): void {
         // defaults to now
         let date = new Date();
-        let secondDate = date.mtDate.getNextOccurenceOfDate(3, 25);
-        let thirdDate = date.mtDate.addFullDate(new Date());
+        let secondDate = date.mtDate.getNextOccurenceOfDate(11, 13);
         console.log(date);
-        console.log(date.mtDate.getConfig());
         console.log(secondDate);
-        console.log(thirdDate);
-        console.log(date.mtDate.isAfterDate(secondDate));
-        console.log(date.mtDate.howLongUntilNextHoliday());
+        console.log(secondDate.mtDate.howLongUntilNextHoliday());
         // "Sunday, February 14th 2010, 3:25:50 pm" is the moment format of the date
         this.someText =
             date.mtDate.toMoment().format('dddd, MMMM Do YYYY, h:mm:ss a') +
