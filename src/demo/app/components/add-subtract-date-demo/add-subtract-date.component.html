@@ -6,13 +6,10 @@
         month, or even a minute, second, or hour).
     </p>
 </div>
-<br />
-
-<label></label>
-<p>{{ currentDate.mtDate.format('MM/DD/YYYY') }}</p>
-
+<hr />
+<h4>Date Manipulation</h4>
 <div class="row">
-    <div class="col-sm-3" ng-controller="AddSubController">
+    <div class="col-sm-3">
         <form [formGroup]="addSubSelect">
             <label for="addSubSelect"> I'd like to: </label><br />
             <select
@@ -27,7 +24,6 @@
             <br />
         </form>
     </div>
-    <br />
     <div class="col-sm-3">
         <form [formGroup]="enumForm">
             <label for="enumForm"> Date Type: </label><br />
@@ -46,7 +42,13 @@
             <br />
         </form>
     </div>
-    <br />
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+        <h3>{{ currentDate.mtDate.format('MM/DD/YYYY') }}</h3>
+    </div>
+</div>
+<br />
+<div class="row">
     <div class="col-sm-3">
         <form [formGroup]="quantityForm">
             <label
@@ -61,7 +63,6 @@
             </label>
         </form>
     </div>
-    <br />
     <div class="col-sm-3">
         <button class="btn btn-primary" (click)="addOrSubtract()">
             Submit!
@@ -71,14 +72,10 @@
 
 <br />
 <br />
-<br />
-<br />
 
-<label></label>
-<p>{{ currentTime.mtDate.format('h:mm.ss.ms a') }}</p>
-
+<h4>Time Manipulation</h4>
 <div class="row">
-    <div class="col-sm-3" ng-controller="AddSubTimeController">
+    <div class="col-sm-3">
         <form [formGroup]="addSubTimeSelect">
             <label for="addSubTimeSelect"> I'd like to: </label><br />
             <select
@@ -93,7 +90,6 @@
             <br />
         </form>
     </div>
-    <br />
     <div class="col-sm-3">
         <form [formGroup]="enumTimeForm">
             <label for="enumTimeForm"> Time Type: </label><br />
@@ -111,7 +107,13 @@
             <br />
         </form>
     </div>
-    <br />
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+        <h3>{{ currentTime.mtDate.format('h:mm.ss.ms a') }}</h3>
+    </div>
+</div>
+<br />
+<div class="row">
     <div class="col-sm-3">
         <form [formGroup]="timeQuantityForm">
             <label
@@ -126,10 +128,11 @@
             </label>
         </form>
     </div>
-    <br />
     <div class="col-sm-3">
         <button class="btn btn-primary" (click)="addOrSubtractTime()">
             Submit!
         </button>
     </div>
 </div>
+
+<br />
