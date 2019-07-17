@@ -18,7 +18,14 @@ export interface ITimeChunkConstructorObject {
     millisecond?: number;
 }
 
-export class TimeChunk implements ITimeChunkConstructorObject {
+export class TimeChunk implements ITimeChunk {
+    year: number;
+    month: number;
+    day: number;
+    hour: number;
+    minute: number;
+    second: number;
+    millisecond: number;
     constructor(timeChunkConstructor: ITimeChunkConstructorObject = {}) {
         let defaultTimeChunkObject = {
             year: 0,

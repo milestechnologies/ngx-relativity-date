@@ -1,4 +1,5 @@
 export interface IDateModuleConfiguration {
+    defaultFormatString?: string;
     workWeek?: [
         // weekday indexed from 0 -> 6 / Sun -> Sat
         { start: number; end: number },
@@ -16,6 +17,7 @@ export interface IDateModuleConfiguration {
     }[]; // change to expect Date type
 }
 export const defaultDateModuleConfig: IDateModuleConfiguration = {
+    defaultFormatString: 'dddd, MMMM Do YYYY, h:mm:ss a',
     workWeek: [
         { start: null, end: null },
         { start: 9, end: 17 },

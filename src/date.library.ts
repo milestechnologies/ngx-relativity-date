@@ -136,7 +136,9 @@ export class MtDate implements IMtDate {
      */
     format(tokenString?: string): string {
         if (!tokenString) {
-            return moment(this.date).format();
+            return moment(this.date).format(
+                defaultDateModuleConfig.defaultFormatString
+            );
         }
         return moment(this.date).format(tokenString);
     }
