@@ -4,6 +4,7 @@ import {
 } from './default-configuration.library';
 import * as momentImported from 'moment';
 import { TimeChunk } from './time-chunk.library';
+import { IHolidayDefinition } from './holiday.library';
 const moment = momentImported;
 
 export enum DateParts {
@@ -198,6 +199,51 @@ export class MtDate implements IMtDate {
             // console.log('take a load off, go home and relax!');
             return false;
         }
+    }
+
+    // isHoliday function returns a string of the holiday name
+    // if the date object is a holiday and false if it does not
+    isHoliday(): string | boolean {
+        for (let holiday of this.config.holidays) {
+            if (holiday.month - 1 === this.date.getMonth()) {
+                let instanceOfDay = this.getInstanceOfDay(holiday);
+                if (instanceOfDay === this.date.getDate()) {
+                    return holiday.description;
+                }
+            }
+        }
+        return false;
+    }
+
+    // passes in a holiday object
+    // returns the day that the holiday will be observed on
+    getInstanceOfDay(holiday: IHolidayDefinition): number {
+        let instanceOfDay = 0;
+        // if property day exists - else dayResolver
+        if (holiday.day) {
+            instanceOfDay = holiday.day;
+        } else {
+            instanceOfDay = holiday.dayResolver(this.date);
+        }
+        // apply observance rules
+        if (holiday.usesObservanceRules) {
+            let tempDate = new Date(
+                this.date.getFullYear(),
+                this.date.getMonth(),
+                instanceOfDay
+            );
+            // saturday
+            if (tempDate.getDay() === 6) {
+                // friday off
+                instanceOfDay = instanceOfDay - 1;
+            }
+            // sunday
+            if (tempDate.getDay() === 0) {
+                // monday off
+                instanceOfDay = instanceOfDay + 1;
+            }
+        }
+        return instanceOfDay;
     }
 
     // determines the next holiday and returns the string from
