@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     templateUrl: './add-subtract-date.component.html'
 })
 export class AddSubtractDateComponent {
-    //controls adding to date
+    // controls adding to date
     currentDate = new Date();
     addSubSelect = new FormGroup({
         key1: new FormControl('', [Validators.required])
@@ -18,7 +18,7 @@ export class AddSubtractDateComponent {
         key3: new FormControl('', [Validators.required])
     });
 
-    //controls adding to time
+    // controls adding to time
     currentTime = new Date();
     addSubTimeSelect = new FormGroup({
         keyTime1: new FormControl('', [Validators.required])
@@ -48,8 +48,8 @@ export class AddSubtractDateComponent {
         // this is the amount
         const quantity = this.quantityForm.value.key3;
         if (quantity > 100 || quantity < 0) {
-                alert('Pick a number less than 100 and greater than 0');
-                return;
+            alert('Pick a number less than 100 and greater than 0');
+            return;
         }
         if (which === 'add') {
             this.currentDate.mtDate.add(quantity, part);
