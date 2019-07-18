@@ -1,28 +1,20 @@
-<div class="jumbotron demo-description-block">
-    <h4><em>How it works</em></h4>
-    <p></p>
-</div>
-<hr />
-<h4><em>Test the To/From Functions!</em></h4>
-<br />
 <form [formGroup]="tfForm">
     <div class="row">
         <div class="col-sm-4">
-            <h4>Select to or from:</h4>
+            <label>Select to or from: </label>
             <select
                 name="key1selector"
                 formControlName="key1"
                 ng-model="data.tfFrom"
-                class="form-control"
             >
-                <option value="">Please select</option>
+                <option value="">---Please select---</option>
                 <option value="to">To</option>
                 <option value="from">from</option>
             </select>
-            <br />
-            <h4 for="tfForm">
+
+            <label for="tfForm">
                 Day:
-            </h4>
+            </label>
             <textarea
                 class="form-control z-depth-1"
                 id="exampleFormControlTextarea6"
@@ -30,20 +22,19 @@
                 placeholder="Write description here..."
                 formControlName="key4"
             ></textarea>
-            <br />
+
             <button class="btn btn-primary" (click)="toAndFrom()">
                 Click for to and from
             </button>
         </div>
         <div class="col-sm-4">
-            <h4>Month:</h4>
+            <label>Month: </label>
             <select
                 name="key3selector"
                 formControlName="key3"
                 ng-model="data.tfFrom"
-                class="form-control"
             >
-                <option value="">Please select</option>
+                <option value="">---Please select---</option>
                 <option [ngValue]="0">January</option>
                 <option [ngValue]="1">February</option>
                 <option [ngValue]="2">March</option>
@@ -57,16 +48,16 @@
                 <option [ngValue]="10">November</option>
                 <option [ngValue]="11">December</option>
             </select>
-            <br />
-            <h4 for="tfForm">Year:</h4>
+
+            <label for="tfForm">Year between 1970 and 2100:</label>
             <textarea
                 class="form-control z-depth-1"
                 id="exampleFormControlTextarea6"
                 rows="4"
-                placeholder="Must be between 1970 and 2100..."
+                placeholder="Write description here..."
                 formControlName="key2"
             ></textarea>
         </div>
-        <div class="col-sm-4"><h4>OUTPUT VARIABLE HERE</h4></div>
+        <div class="col-sm-4"><label>This is output</label></div>
     </div>
 </form>
