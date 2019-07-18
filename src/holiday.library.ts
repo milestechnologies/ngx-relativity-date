@@ -55,8 +55,19 @@ export const christmasDefinition: IHolidayDefinition = {
 
 export function laborDayResolver(date: Date): number {
     // first Monday in Sept
-    let y = date.getFullYear();
-    return 1;
+    let numberOfMondays = 1;
+    // this year, Sept, start at day 1
+    let thisYear = new Date(date.getFullYear(), 8, 1);
+    let i = numberOfMondays;
+    while (i > 0) {
+        // if Monday
+        if (thisYear.getDay() === 1) {
+            i--;
+        } else {
+            thisYear.setDate(thisYear.getDate() + 1);
+        }
+    }
+    return thisYear.getDate();
 }
 
 export const laborDayDefinintion: IHolidayDefinition = {

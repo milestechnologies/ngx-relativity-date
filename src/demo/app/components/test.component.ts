@@ -19,7 +19,7 @@ export class TestComponent implements OnInit {
         // defaults to now
         let date = new Date();
         // let secondDate = date.mtDate.getNextOccurenceOfDate(11, 25);
-        let secondDate = date.mtDate.getNextOccurenceOfDate(8, 4);
+        let secondDate = date.mtDate.getNextOccurenceOfDate(8, 2);
         console.log(date);
         console.log(secondDate);
         console.log(secondDate.mtDate.isHoliday());
