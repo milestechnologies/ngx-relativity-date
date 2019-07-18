@@ -39,7 +39,7 @@ export class ToFromComponent {
                 console.log(this.newDate.mtDate.to(toFromDate));
         }
         if (toOrFrom === 'from') {
-                console.log(this.newDate.mtDate.to(toFromDate));
+                console.log(toFromDate.mtDate.to(this.newDate));
         }
     }
 }
