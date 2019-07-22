@@ -217,31 +217,35 @@ export class MtDate implements IMtDate {
 
     // passes in a holiday object
     // returns the day that the holiday will be observed on
-    getInstanceOfDay(holiday: IHolidayDefinition): number {
-        let instanceOfDay = 0;
+    private getInstanceOfDay(holiday: IHolidayDefinition): number {
         // if property day exists - else dayResolver
-        if (holiday.day) {
-            instanceOfDay = holiday.day;
-        } else {
-            instanceOfDay = holiday.dayResolver(this.date);
-        }
-        // apply observance rules
+        let instanceOfDay = holiday.day
+            ? holiday.day
+            : holiday.dayResolver(this.date);
         if (holiday.usesObservanceRules) {
-            let tempDate = new Date(
-                this.date.getFullYear(),
-                this.date.getMonth(),
-                instanceOfDay
-            );
-            // saturday
-            if (tempDate.getDay() === 6) {
-                // friday off
-                instanceOfDay = instanceOfDay - 1;
-            }
-            // sunday
-            if (tempDate.getDay() === 0) {
-                // monday off
-                instanceOfDay = instanceOfDay + 1;
-            }
+            // apply observance rules
+            instanceOfDay = this.applyObservanceRules(instanceOfDay);
+        }
+        return instanceOfDay;
+    }
+
+    // handles only the observance rules
+    private applyObservanceRules(iod: number): number {
+        let instanceOfDay = iod;
+        let tempDate = new Date(
+            this.date.getFullYear(),
+            this.date.getMonth(),
+            iod
+        );
+        // saturday
+        if (tempDate.getDay() === 6) {
+            // friday off
+            instanceOfDay = instanceOfDay - 1;
+        }
+        // sunday
+        if (tempDate.getDay() === 0) {
+            // monday off
+            instanceOfDay = instanceOfDay + 1;
         }
         return instanceOfDay;
     }

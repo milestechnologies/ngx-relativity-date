@@ -1,8 +1,4 @@
-import {
-    IHolidayDefinition,
-    christmasDefinition,
-    laborDayDefinintion
-} from './holiday.library';
+import { IHolidayDefinition, laborDayResolver } from './holiday.library';
 
 export interface IDateModuleConfiguration {
     defaultFormatString?: string;
@@ -18,6 +14,20 @@ export interface IDateModuleConfiguration {
     ];
     holidays?: IHolidayDefinition[]; // change to expect Date type
 }
+
+export const laborDayDefinintion: IHolidayDefinition = {
+    description: 'Labor Day',
+    month: 9,
+    dayResolver: laborDayResolver,
+    usesObservanceRules: true
+};
+
+export const christmasDefinition: IHolidayDefinition = {
+    description: 'Christmas Day',
+    month: 12,
+    day: 25
+};
+
 export const defaultDateModuleConfig: IDateModuleConfiguration = {
     defaultFormatString: 'dddd, MMMM Do YYYY, h:mm:ss a',
     workWeek: [

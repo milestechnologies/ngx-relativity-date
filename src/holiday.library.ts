@@ -47,12 +47,6 @@ export interface IHolidayResolved {
  * everything below this line is what a user would define
  */
 
-export const christmasDefinition: IHolidayDefinition = {
-    description: 'Christmas Day',
-    month: 12,
-    day: 25
-};
-
 export function laborDayResolver(date: Date): number {
     // first Monday in Sept
     let numberOfMondays = 1;
@@ -69,10 +63,3 @@ export function laborDayResolver(date: Date): number {
     }
     return thisYear.getDate();
 }
-
-export const laborDayDefinintion: IHolidayDefinition = {
-    description: 'Labor Day',
-    month: 9,
-    dayResolver: laborDayResolver,
-    usesObservanceRules: true
-};
