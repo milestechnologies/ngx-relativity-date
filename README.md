@@ -1,3 +1,4 @@
+
 # Relativity Date  
 
 This package is designed to help you manage date and time. 
@@ -30,19 +31,19 @@ This will then output the percentage of **Statements**, **Branches**, **Function
 What these tests actually test is if the code gets executed will it do what it is supposed to do. The most important thing when testing is making sure that the **Statements** are 100% covered. 
 
 ## Built With 
-* [Angular]([https://angular.io/](https://angular.io/)) - The web framework used 
-* [Npm]([https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)) - The package manager
+* [Angular](https://angular.io/) - The web framework used 
+* [Npm](https://www.npmjs.com/get-npm) - The package manager
 
 ## Version
 Not released 
 
 ## Contributors
 
-Thank you to the [contributors]([https://github.com/milestechnologies/ngx-keyboard-shortcuts/graphs/contributors](https://github.com/milestechnologies/ngx-keyboard-shortcuts/graphs/contributors)) of this package. 
+Thank you to the [contributors](https://github.com/milestechnologies/ngx-relativity-date/graphs/contributors) of this package. 
 
 ## License
 
-This project is licensed under the MIT License - see the  [LICENSE.md]([https://github.com/milestechnologies/ngx-keyboard-shortcuts/blob/develop/LICENSE])  file for details.
+This project is licensed under the MIT License - see the  [LICENSE.md](https://github.com/ivarcode/ngx-date-module/blob/develop/LICENSE)  file for details.
 ## Commands
 
 `npm start` Run the demo environment

@@ -48,18 +48,31 @@ export interface IHolidayResolved {
  */
 
 export const christmasDefinition: IHolidayDefinition = {
-    description: 'Christmas',
+    description: 'Christmas Day',
     month: 12,
-    day: 25,
+    day: 25
 };
 
-export function laborDayResolover(date: Date): number {
-    date.getFullYear();
-    return 4;
+export function laborDayResolver(date: Date): number {
+    // first Monday in Sept
+    let numberOfMondays = 1;
+    // this year, Sept, start at day 1
+    let thisYear = new Date(date.getFullYear(), 8, 1);
+    let i = numberOfMondays;
+    while (i > 0) {
+        // if Monday
+        if (thisYear.getDay() === 1) {
+            i--;
+        } else {
+            thisYear.setDate(thisYear.getDate() + 1);
+        }
+    }
+    return thisYear.getDate();
 }
 
 export const laborDayDefinintion: IHolidayDefinition = {
-    description: 'Labor',
-    month: 4,
-    dayResolver: laborDayResolover,
+    description: 'Labor Day',
+    month: 9,
+    dayResolver: laborDayResolver,
+    usesObservanceRules: true
 };

@@ -3,18 +3,19 @@
     <p></p>
 </div>
 <hr />
+<h2><em>Lets create an event!</em></h2>
 <br />
-
-<div class="row">
-    <div class="col-sm-4" ng-controller="AddSubTimeController">
-        <form [formGroup]="createEvent">
-            <label for="createEvent">Month:</label>
+<form [formGroup]="createEvent">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 for="createEvent">Month:</h4>
             <select
                 name="key1selector"
                 formControlName="key1"
                 ng-model="data.createEvent"
+                class="form-control"
             >
-                <option [ngValue]="">---Please select---</option>
+                <option value=""></option>
                 <option [ngValue]="0">January</option>
                 <option [ngValue]="1">February</option>
                 <option [ngValue]="2">March</option>
@@ -28,96 +29,109 @@
                 <option [ngValue]="10">November</option>
                 <option [ngValue]="11">December</option>
             </select>
-            <br />
-            <br />
-            <label for="createEvent">Day:</label>
-            <input
-                style="margin-left: 0px;"
-                class="form-control col-sm-4"
-                type="number"
-                formControlName="key2"
-            />
-            <br />
-            <br />
-            <label>Year: </label>
-            <select
-                name="key3selector"
-                formControlName="key3"
-                ng-model="data.createEvent"
-            >
-                <option value="">---Please select---</option>
-                <option [ngValue]="2019">2019</option>
-            </select>
 
             <br />
+            <div class="row">
+                <div class="col-sm-12"><h4 for="createEvent">Day:</h4></div>
+                <div class="col-sm-12">
+                    <input
+                        name="day"
+                        min="1"
+                        max="1000000"
+                        type="number"
+                        placeholder="Enter a day..."
+                        formControlName="key2"
+                        class="form-control"
+                    />
+                </div>
+            </div>
             <br />
-
-            <label for="exampleFormControlTextarea6">Description:</label>
-            <textarea
-                class="form-control z-depth-1"
-                id="exampleFormControlTextarea6"
-                rows="3"
-                placeholder="Write description here..."
-                formControlName="key4"
-            ></textarea>
-
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 for="createEvent">
+                        Description:<textarea
+                            class="form-control z-depth-1"
+                            id="exampleFormControlTextarea6"
+                            rows="4"
+                            placeholder="Write description here..."
+                            formControlName="key4"
+                        ></textarea>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="col-sm-2">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 for="createEvent">Year:</h4>
+                </div>
+                <div class="col-sm-12">
+                    <select
+                        name="key3selector"
+                        formControlName="key3"
+                        ng-model="data.createEvent"
+                        class="form-control"
+                    >
+                        <option value=""></option>
+                        <option [ngValue]="2019">2019</option>
+                    </select>
+                </div>
+            </div>
             <br />
             <br />
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 for="createEvent">Priority:</h4>
+                </div>
+                <div class="col-sm-12">
+                    <select
+                        name="key5selector"
+                        formControlName="key5"
+                        ng-model="data.createEvent"
+                        class="form-control"
+                    >
+                        <option value=""></option>
+                        <option value="No Importance">No Importance</option>
+                        <option value="Some Importance">Some Importance</option>
+                        <option value="Very Important">Very Important</option>
+                        <option value="Extremely Important"
+                            >Extremely Important</option
+                        >
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-12">
+                    <br />
+                    <br />
+                    <button class="btn btn-primary" (click)="setEvent()">
+                        Create The Event!
+                    </button>
+                </div>
+            </div>
+        </div>
 
-            <label>
-                Priority:
-            </label>
-            <select
-                name="key5selector"
-                formControlName="key5"
-                ng-model="data.createEvent"
-            >
-                <option value="">---Please select---</option>
-                <option value="No Importance">No Importance</option>
-                <option value="Some Importance">Some Importance</option>
-                <option value="Very Important">Very Important</option>
-                <option value="Extremely Important">Extremely Important</option>
-            </select>
-        </form>
+        <div class="col-sm-6">
+            <table cellpadding="10" style="border: groove black;width: 100%;">
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                </tr>
+                <tr *ngFor="let e of outputArr">
+                    <td>
+                        {{ e.date }}
+                    </td>
+                    <td>
+                        {{ e.desc }}
+                    </td>
+                    <td>
+                        {{ e.priority }}
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
-
-<br />
-<br />
-
-<button class="btn btn-primary" (click)="setEvent()">
-    Submit!
-</button>
-
-<br />
-<br />
-<br />
-<br />
-
-<div class="row">
-    <div class="col-sm-6">
-        <table cellpadding="8" style="border: groove black;width: 100%;">
-            <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Priority</th>
-            </tr>
-            <tr *ngFor="let e of outputArr">
-                <td>
-                    {{ e.date }}
-                </td>
-                <td>
-                    {{ e.desc }}
-                </td>
-                <td>
-                    {{ e.priority }}
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-<br />
-<br />
-<br />
-<br />
-<br />
+</form>
