@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Months } from '../../../../dist';
 
 @Component({
     selector: 'app-test',
@@ -19,7 +20,7 @@ export class TestComponent implements OnInit {
         // defaults to now
         let date = new Date();
         // let secondDate = date.mtDate.getNextOccurenceOfDate(11, 25);
-        let secondDate = date.mtDate.getNextOccurenceOfDate(8, 2);
+        let secondDate = date.mtDate.getNextOccurenceOfDate(Months.May, 25);
         console.log(date);
         console.log(secondDate);
         console.log(secondDate.mtDate.isHoliday());
