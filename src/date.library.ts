@@ -4,7 +4,7 @@ import {
 } from './default-configuration.library';
 import * as momentImported from 'moment';
 import { TimeChunk } from './time-chunk.library';
-import { IHolidayDefinition } from './holiday.library';
+import { isHoliday } from './holiday/holiday.library';
 const moment = momentImported;
 
 export enum DateParts {
@@ -201,53 +201,8 @@ export class MtDate implements IMtDate {
         }
     }
 
-    // isHoliday function returns a string of the holiday name
-    // if the date object is a holiday and false if it does not
     isHoliday(): string | boolean {
-        for (let holiday of this.config.holidays) {
-            if (holiday.month - 1 === this.date.getMonth()) {
-                let instanceOfDay = this.getInstanceOfDay(holiday);
-                if (instanceOfDay === this.date.getDate()) {
-                    return holiday.description;
-                }
-            }
-        }
-        return false;
-    }
-
-    // passes in a holiday object
-    // returns the day that the holiday will be observed on
-    private getInstanceOfDay(holiday: IHolidayDefinition): number {
-        // if property day exists - else dayResolver
-        let instanceOfDay = holiday.day
-            ? holiday.day
-            : holiday.dayResolver(this.date);
-        if (holiday.usesObservanceRules) {
-            // apply observance rules
-            instanceOfDay = this.applyObservanceRules(instanceOfDay);
-        }
-        return instanceOfDay;
-    }
-
-    // handles only the observance rules
-    private applyObservanceRules(iod: number): number {
-        let instanceOfDay = iod;
-        let tempDate = new Date(
-            this.date.getFullYear(),
-            this.date.getMonth(),
-            iod
-        );
-        // saturday
-        if (tempDate.getDay() === 6) {
-            // friday off
-            instanceOfDay = instanceOfDay - 1;
-        }
-        // sunday
-        if (tempDate.getDay() === 0) {
-            // monday off
-            instanceOfDay = instanceOfDay + 1;
-        }
-        return instanceOfDay;
+        return isHoliday.bind(this)();
     }
 
     // determines the next holiday and returns the string from

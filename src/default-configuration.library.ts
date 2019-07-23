@@ -1,4 +1,10 @@
-import { IHolidayDefinition, laborDayResolver } from './holiday.library';
+import {
+    IHolidayDefinition,
+    Months,
+    DaysOfTheWeek,
+    HowManyWeeks
+} from './holiday/holiday.library.definitions';
+import { anyHolidayResolver } from './holiday/any-holiday-resolver.library';
 
 export interface IDateModuleConfiguration {
     defaultFormatString?: string;
@@ -17,14 +23,18 @@ export interface IDateModuleConfiguration {
 
 export const laborDayDefinintion: IHolidayDefinition = {
     description: 'Labor Day',
-    month: 9,
-    dayResolver: laborDayResolver,
+    month: Months.September,
+    dayResolver: {
+        resolver: anyHolidayResolver,
+        dayOfTheWeek: DaysOfTheWeek.Monday,
+        howManyWeeks: HowManyWeeks.first
+    },
     usesObservanceRules: true
 };
 
 export const christmasDefinition: IHolidayDefinition = {
     description: 'Christmas Day',
-    month: 12,
+    month: Months.December,
     day: 25
 };
 
