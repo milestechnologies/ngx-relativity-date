@@ -19,14 +19,6 @@ export interface IHolidayDefinition {
 }
 
 /**
- * would be private
- */
-export interface IHolidayResolved {
-    description: string;
-    month: number;
-    day: number; // specific day
-}
-/**
  * @enum defines months by name for readability
  */
 export enum Months {

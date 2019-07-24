@@ -4,7 +4,12 @@ import {
 } from './default-configuration.library';
 import * as momentImported from 'moment';
 import { TimeChunk } from './time-chunk.library';
-import { isHoliday } from './holiday/holiday.library';
+import {
+    isHoliday,
+    howLongUntilNextHoliday,
+    getNextOccurenceOfDate
+} from './holiday/holiday.library';
+import { isDuringWorkHours } from './workweek/workweek.library';
 const moment = momentImported;
 
 export enum DateParts {
@@ -184,59 +189,24 @@ export class MtDate implements IMtDate {
         return this.toMoment().diff(date.mtDate.toMoment()) > 0;
     }
 
-    // returns whether this date is within the work hours defined
-    // by the config
+    // referencing function in workweek library
     isDuringWorkHours(): boolean {
-        let thisMoment = this.toMoment();
-        if (
-            thisMoment.hour() >=
-                this.config.workWeek[thisMoment.weekday()].start &&
-            thisMoment.hour() <= this.config.workWeek[thisMoment.weekday()].end
-        ) {
-            // console.log('you should be at work right now!');
-            return true;
-        } else {
-            // console.log('take a load off, go home and relax!');
-            return false;
-        }
+        return isDuringWorkHours.bind(this)();
     }
 
+    // referencing function in holiday library
     isHoliday(): string | boolean {
         return isHoliday.bind(this)();
     }
 
-    // determines the next holiday and returns the string from
-    // calling .to(next occurence of holiday)
+    // referencing function in holiday library
     howLongUntilNextHoliday(): string {
-        let retDate = new Date();
-        let firstElement = true;
-        let nextOcc: Date;
-        for (let holiday of this.config.holidays) {
-            nextOcc = this.getNextOccurenceOfDate(holiday.month, holiday.day);
-            if (firstElement || retDate.mtDate.isAfterDate(nextOcc)) {
-                retDate = nextOcc;
-                firstElement = false;
-            }
-        }
-        return this.to(nextOcc);
+        return howLongUntilNextHoliday.bind(this)();
     }
 
-    // build Date obj of the next occurence of the next month/day combination
-    // after the current day
+    // referencing function in holiday library
     getNextOccurenceOfDate(month: number, day: number): Date {
-        let thisMoment = this.toMoment();
-        let this_year = new Date(thisMoment.year(), month, day);
-        let next_year = new Date(thisMoment.year() + 1, month, day);
-        // console.log(this_year);
-        // console.log(next_year);
-        if (thisMoment.month() < month) {
-            return this_year;
-        } else {
-            if (thisMoment.month() === month && thisMoment.day() < day) {
-                return this_year;
-            }
-        }
-        return next_year;
+        return getNextOccurenceOfDate.bind(this)(month, day);
     }
 
     // designed to one-line adding/subtracting multiple date parts / values
