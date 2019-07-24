@@ -1,86 +1,121 @@
 import {
     IHolidayDefinition,
-    christmasDefinition,
-    laborDayDefinintion
-} from './holiday.library';
+    Months,
+    DaysOfTheWeek,
+    HowManyWeeks
+} from './holiday/holiday.library.definitions';
+import {
+    anyHolidayResolver,
+    lastDayOfTheWeekInTheMonthResolver
+} from './holiday/holiday-resolvers.library';
+import { IWorkWeekDefinition } from './workweek/workweek.library';
 
 export interface IDateModuleConfiguration {
     defaultFormatString?: string;
-    workWeek?: [
-        // weekday indexed from 0 -> 6 / Sun -> Sat
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number }
-    ];
+    workWeek?: IWorkWeekDefinition;
     holidays?: IHolidayDefinition[]; // change to expect Date type
 }
+
+export const christmasDayDefinition: IHolidayDefinition = {
+    description: 'Christmas Day',
+    month: Months.December,
+    day: 25
+};
+export const laborDayDefinintion: IHolidayDefinition = {
+    description: 'Labor Day',
+    month: Months.September,
+    dayResolver: {
+        resolver: anyHolidayResolver,
+        dayOfTheWeek: DaysOfTheWeek.Monday,
+        howManyWeeks: HowManyWeeks.first
+    },
+    usesObservanceRules: true
+};
+export const newYearsDayDefinition: IHolidayDefinition = {
+    description: 'New Years Day',
+    month: Months.January,
+    day: 1
+};
+export const martinLutherKingJrDayDefinition: IHolidayDefinition = {
+    description: 'Martin Luther King Jr. Day',
+    month: Months.January,
+    dayResolver: {
+        resolver: anyHolidayResolver,
+        dayOfTheWeek: DaysOfTheWeek.Monday,
+        howManyWeeks: HowManyWeeks.third
+    },
+    usesObservanceRules: true
+};
+export const washingtonsBirthdayDefinition: IHolidayDefinition = {
+    description: 'George Washingtons Birthday',
+    month: Months.February,
+    dayResolver: {
+        resolver: anyHolidayResolver,
+        dayOfTheWeek: DaysOfTheWeek.Monday,
+        howManyWeeks: HowManyWeeks.third
+    },
+    usesObservanceRules: true
+};
+export const independenceDayDefinition: IHolidayDefinition = {
+    description: 'Independence Day',
+    month: Months.July,
+    day: 4
+};
+export const columbusDayDefinition: IHolidayDefinition = {
+    description: 'Columbus Day',
+    month: Months.October,
+    dayResolver: {
+        resolver: anyHolidayResolver,
+        dayOfTheWeek: DaysOfTheWeek.Monday,
+        howManyWeeks: HowManyWeeks.second
+    },
+    usesObservanceRules: true
+};
+export const veteransDayDefinition: IHolidayDefinition = {
+    description: 'Veterans Day',
+    month: Months.November,
+    day: 11
+};
+export const thanksgivingDayDefinition: IHolidayDefinition = {
+    description: 'Thanksgiving Day',
+    month: Months.November,
+    dayResolver: {
+        resolver: anyHolidayResolver,
+        dayOfTheWeek: DaysOfTheWeek.Thursday,
+        howManyWeeks: HowManyWeeks.fourth
+    }
+};
+export const memorialDayDefinition: IHolidayDefinition = {
+    description: 'Memorial Day',
+    month: Months.May,
+    dayResolver: {
+        resolver: lastDayOfTheWeekInTheMonthResolver,
+        dayOfTheWeek: DaysOfTheWeek.Monday
+    },
+    usesObservanceRules: true
+};
+
 export const defaultDateModuleConfig: IDateModuleConfiguration = {
     defaultFormatString: 'dddd, MMMM Do YYYY, h:mm:ss a',
-    workWeek: [
-        { start: null, end: null },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: null, end: null }
-    ],
+    workWeek: {
+        sunday: { start: null, end: null },
+        monday: { start: 9, end: 17 },
+        tuesday: { start: 9, end: 17 },
+        wednesday: { start: 9, end: 17 },
+        thursday: { start: 9, end: 17 },
+        friday: { start: 9, end: 17 },
+        saturday: { start: null, end: null }
+    },
     holidays: [
-        christmasDefinition,
-        laborDayDefinintion
-        // {
-        //     desc: 'New Years Day',
-        //     month: 0,
-        //     day: 1
-        // },
-        // {
-        //     desc: 'Martin Luther King, Jr. Day', // changes from year to year
-        //     month: 0,
-        //     day: 21
-        // },
-        // {
-        //     desc: 'George Washintons Birthday', // changes from year to year
-        //     month: 1,
-        //     day: 18
-        // },
-        // {
-        //     desc: 'Memorial Day', // changes from year to year
-        //     month: 4,
-        //     day: 27
-        // },
-        // {
-        //     desc: 'Independence Day',
-        //     month: 6,
-        //     day: 4
-        // },
-        // {
-        //     desc: 'Labor Day', // changes from year to year
-        //     month: 8,
-        //     day: 2
-        // },
-        // {
-        //     desc: 'Columbus Day', // changes from year to year
-        //     month: 9,
-        //     day: 14
-        // },
-        // {
-        //     desc: 'Veterans Day',
-        //     month: 10,
-        //     day: 11
-        // },
-        // {
-        //     desc: 'Thanksgiving Day', // changes from year to year
-        //     month: 10,
-        //     day: 28
-        // },
-        // {
-        //     desc: 'Christmas Day',
-        //     month: 11,
-        //     day: 25
-        // }
+        christmasDayDefinition,
+        laborDayDefinintion,
+        newYearsDayDefinition,
+        martinLutherKingJrDayDefinition,
+        washingtonsBirthdayDefinition,
+        independenceDayDefinition,
+        columbusDayDefinition,
+        veteransDayDefinition,
+        thanksgivingDayDefinition,
+        memorialDayDefinition
     ]
 };

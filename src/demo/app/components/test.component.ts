@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Months } from '../../../../dist';
 
 @Component({
     selector: 'app-test',
@@ -18,15 +19,15 @@ export class TestComponent implements OnInit {
     ngOnInit(): void {
         // defaults to now
         let date = new Date();
-        // let secondDate = date.mtDate.getNextOccurenceOfDate(11, 25);
-        let secondDate = date.mtDate.getNextOccurenceOfDate(8, 2);
+        // let secondDate = date.relativityDate.getNextOccurenceOfDate(11, 25);
+        let secondDate = date.relativityDate.getNextOccurenceOfDate(Months.May, 25);
         console.log(date);
         console.log(secondDate);
-        console.log(secondDate.mtDate.isHoliday());
+        console.log(secondDate.relativityDate.isHoliday());
         // "Sunday, February 14th 2010, 3:25:50 pm" is the moment format of the date
         this.someText =
-            date.mtDate.toMoment().format('dddd, MMMM Do YYYY, h:mm:ss a') +
+            date.relativityDate.toMoment().format('dddd, MMMM Do YYYY, h:mm:ss a') +
             ' :: ' +
-            date.mtDate.isDuringWorkHours();
+            date.relativityDate.isDuringWorkHours();
     }
 }

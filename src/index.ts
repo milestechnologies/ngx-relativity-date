@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MtDate } from './date.library';
+import { RelativityDate } from './date.library';
 import { IDateModuleConfiguration } from './default-configuration.library';
 
 declare global {
     // tslint:disable-next-line: interface-name
     interface Date {
-        mtDate: MtDate;
+        relativityDate: RelativityDate;
     }
 }
 
@@ -15,9 +15,9 @@ declare global {
 })
 export class NgxDateModule {
     static forRoot(customConfiguration?: IDateModuleConfiguration): any {
-        Object.defineProperty(Date.prototype, 'mtDate', {
-            get: function(): MtDate {
-                return new MtDate(this, true, customConfiguration);
+        Object.defineProperty(Date.prototype, 'relativityDate', {
+            get: function(): RelativityDate {
+                return new RelativityDate(this, true, customConfiguration);
             }
         });
         if (customConfiguration) {

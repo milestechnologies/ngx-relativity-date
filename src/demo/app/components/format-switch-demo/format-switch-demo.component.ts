@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MtDate } from '../../../../../dist/public_api';
+import { RelativityDate } from '../../../../../dist/public_api';
 
 @Component({
     selector: 'app-test',
@@ -20,31 +20,31 @@ export class FormatSwitchComponent {
 
         switch (format) {
             case 'dmy': {
-                this.newDate = this.currentDate.mtDate.format('DD/MM/YYYY');
+                this.newDate = this.currentDate.relativityDate.format('DD/MM/YYYY');
                 return;
             }
             case 'dym': {
-                this.newDate = this.currentDate.mtDate.format('DD/YYYY/MM');
+                this.newDate = this.currentDate.relativityDate.format('DD/YYYY/MM');
                 return;
             }
             case 'ymd': {
-                this.newDate = this.currentDate.mtDate.format('YYYY/MM/DD');
+                this.newDate = this.currentDate.relativityDate.format('YYYY/MM/DD');
                 return;
             }
             case 'ydm': {
-                this.newDate = this.currentDate.mtDate.format('YYYY/DD/MM');
+                this.newDate = this.currentDate.relativityDate.format('YYYY/DD/MM');
                 return;
             }
             case 'mdy': {
-                this.newDate = this.currentDate.mtDate.format('MM/DD/YYYY');
+                this.newDate = this.currentDate.relativityDate.format('MM/DD/YYYY');
                 return;
             }
             case 'myd': {
-                this.newDate = this.currentDate.mtDate.format('MM/YYYY/DD');
+                this.newDate = this.currentDate.relativityDate.format('MM/YYYY/DD');
                 return;
             }
             default: {
-                this.newDate = this.currentDate.mtDate.format('DD/MM/YYYY');
+                this.newDate = this.currentDate.relativityDate.format('DD/MM/YYYY');
                 return;
             }
         }

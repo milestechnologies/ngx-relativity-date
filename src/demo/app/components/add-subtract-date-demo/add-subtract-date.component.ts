@@ -52,11 +52,11 @@ export class AddSubtractDateComponent {
             return;
         }
         if (which === 'add') {
-            this.currentDate.mtDate.add(quantity, part);
+            this.currentDate.relativityDate.add(quantity, part);
         }
 
         if (which === 'sub') {
-            this.currentDate.mtDate.subtract(quantity, part);
+            this.currentDate.relativityDate.subtract(quantity, part);
         }
     }
 
@@ -80,13 +80,13 @@ export class AddSubtractDateComponent {
 
         if (which === 'add') {
             console.log(quantity, part);
-            this.currentTime.mtDate.add(quantity, part);
-            console.log(this.currentTime.mtDate);
+            this.currentTime.relativityDate.add(quantity, part);
+            console.log(this.currentTime.relativityDate);
         }
 
         if (which === 'sub') {
-            this.currentTime.mtDate.subtract(quantity, part);
-            console.log(this.currentTime.mtDate);
+            this.currentTime.relativityDate.subtract(quantity, part);
+            console.log(this.currentTime.relativityDate);
         }
     }
 }

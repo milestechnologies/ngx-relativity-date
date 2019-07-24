@@ -4,7 +4,12 @@ import {
 } from './default-configuration.library';
 import * as momentImported from 'moment';
 import { TimeChunk } from './time-chunk.library';
-import { IHolidayDefinition } from './holiday.library';
+import {
+    isHoliday,
+    howLongUntilNextHoliday,
+    getNextOccurenceOfDate
+} from './holiday/holiday.library';
+import { isDuringWorkHours } from './workweek/workweek.library';
 const moment = momentImported;
 
 export enum DateParts {
@@ -21,22 +26,22 @@ export enum DateParts {
 
 type momentDatePart = 'y' | 'Q' | 'M' | 'w' | 'd' | 'h' | 'm' | 's' | 'ms';
 
-export interface IMtDate {
+export interface IRelativityDate {
     date: Date;
-    add(amount: number, part: DateParts): MtDate;
-    subtract(amount: number, part: DateParts): MtDate;
+    add(amount: number, part: DateParts): RelativityDate;
+    subtract(amount: number, part: DateParts): RelativityDate;
     format(tokenString?: string): string;
     from(date?: Date): string;
     to(date?: Date): string;
     toMoment(): momentImported.Moment;
 }
 
-export class MtDate implements IMtDate {
+export class RelativityDate implements IRelativityDate {
     date: Date;
     config: IDateModuleConfiguration;
 
     /**
-     * Create an MtDate object
+     * Create an RelativityDate object
      * @param dateParam the date object to use for the initial value.  Defaults to now.
      * @param asReference boolean flag indicating whether the dateParam should be handled
      * as a reference object.  Defaults to false.
@@ -63,17 +68,17 @@ export class MtDate implements IMtDate {
         }
     }
 
-    // returns the configuration object of this MtDate
+    // returns the configuration object of this RelativityDate
     getConfig(): any {
         return this.config;
     }
 
     /**
-     * Add to the mtDate value using a specified datePart.
+     * Add to the relativityDate value using a specified datePart.
      * @param amount integer amount to add.
      * @param part date part enumerator specifying which part of the date to add to.
      */
-    add(amount: number, part: DateParts): MtDate {
+    add(amount: number, part: DateParts): RelativityDate {
         const date = moment(this.date)
             .add(amount, this.getMomentDatePart(part))
             .toDate();
@@ -82,11 +87,11 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Subtract from the mtDate value using a specified datePart.
+     * Subtract from the relativityDate value using a specified datePart.
      * @param amount integer amount to subtract.
      * @param part date part enumerator specifying which part of the date to subtract from.
      */
-    subtract(amount: number, part: DateParts): MtDate {
+    subtract(amount: number, part: DateParts): RelativityDate {
         const date = moment(this.date)
             .subtract(amount, this.getMomentDatePart(part))
             .toDate();
@@ -130,7 +135,7 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Get a string reprensentation of the mtDate.
+     * Get a string reprensentation of the relativityDate.
      * @param tokenString string including tokens that will be replaced with date parts.
      * Defaults to 'YYYY-MM-DDTHH:mm:ssZ'.
      * documented here https://momentjs.com/docs/#/displaying/format/
@@ -145,8 +150,8 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Get a string representing the time from the date param to the mtDate.
-     * @param date the date to start from when comparing the mtDate.  Defaults to now.
+     * Get a string representing the time from the date param to the relativityDate.
+     * @param date the date to start from when comparing the relativityDate.  Defaults to now.
      */
     from(date?: Date): string {
         if (!date) {
@@ -156,8 +161,8 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Get a string representing the time from the mtDate to the date param.
-     * @param date the date to end at when comparing the mtDate.  Defaults to now.
+     * Get a string representing the time from the relativityDate to the date param.
+     * @param date the date to end at when comparing the relativityDate.  Defaults to now.
      */
     to(date?: Date): string {
         if (!date) {
@@ -167,8 +172,8 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Provide the mtDate as a Moment object with all of the moment
-     * library functions accessible.  Will have no reference back to the mtDate object.
+     * Provide the relativityDate as a Moment object with all of the moment
+     * library functions accessible.  Will have no reference back to the relativityDate object.
      * Moment documentation here http://momentjs.com/docs/
      */
     toMoment(): momentImported.Moment {
@@ -178,111 +183,35 @@ export class MtDate implements IMtDate {
     // helper functions to allow us to quickly check against the date
     // object to see which date comes first
     isBeforeDate(date: Date): boolean {
-        return this.toMoment().diff(date.mtDate.toMoment()) < 0;
+        return this.toMoment().diff(date.relativityDate.toMoment()) < 0;
     }
     isAfterDate(date: Date): boolean {
-        return this.toMoment().diff(date.mtDate.toMoment()) > 0;
+        return this.toMoment().diff(date.relativityDate.toMoment()) > 0;
     }
 
-    // returns whether this date is within the work hours defined
-    // by the config
+    // referencing function in workweek library
     isDuringWorkHours(): boolean {
-        let thisMoment = this.toMoment();
-        if (
-            thisMoment.hour() >=
-                this.config.workWeek[thisMoment.weekday()].start &&
-            thisMoment.hour() <= this.config.workWeek[thisMoment.weekday()].end
-        ) {
-            // console.log('you should be at work right now!');
-            return true;
-        } else {
-            // console.log('take a load off, go home and relax!');
-            return false;
-        }
+        return isDuringWorkHours.bind(this)();
     }
 
-    // isHoliday function returns a string of the holiday name
-    // if the date object is a holiday and false if it does not
+    // referencing function in holiday library
     isHoliday(): string | boolean {
-        for (let holiday of this.config.holidays) {
-            if (holiday.month - 1 === this.date.getMonth()) {
-                let instanceOfDay = this.getInstanceOfDay(holiday);
-                if (instanceOfDay === this.date.getDate()) {
-                    return holiday.description;
-                }
-            }
-        }
-        return false;
+        return isHoliday.bind(this)();
     }
 
-    // passes in a holiday object
-    // returns the day that the holiday will be observed on
-    getInstanceOfDay(holiday: IHolidayDefinition): number {
-        let instanceOfDay = 0;
-        // if property day exists - else dayResolver
-        if (holiday.day) {
-            instanceOfDay = holiday.day;
-        } else {
-            instanceOfDay = holiday.dayResolver(this.date);
-        }
-        // apply observance rules
-        if (holiday.usesObservanceRules) {
-            let tempDate = new Date(
-                this.date.getFullYear(),
-                this.date.getMonth(),
-                instanceOfDay
-            );
-            // saturday
-            if (tempDate.getDay() === 6) {
-                // friday off
-                instanceOfDay = instanceOfDay - 1;
-            }
-            // sunday
-            if (tempDate.getDay() === 0) {
-                // monday off
-                instanceOfDay = instanceOfDay + 1;
-            }
-        }
-        return instanceOfDay;
-    }
-
-    // determines the next holiday and returns the string from
-    // calling .to(next occurence of holiday)
+    // referencing function in holiday library
     howLongUntilNextHoliday(): string {
-        let retDate = new Date();
-        let firstElement = true;
-        let nextOcc: Date;
-        for (let holiday of this.config.holidays) {
-            nextOcc = this.getNextOccurenceOfDate(holiday.month, holiday.day);
-            if (firstElement || retDate.mtDate.isAfterDate(nextOcc)) {
-                retDate = nextOcc;
-                firstElement = false;
-            }
-        }
-        return this.to(nextOcc);
+        return howLongUntilNextHoliday.bind(this)();
     }
 
-    // build Date obj of the next occurence of the next month/day combination
-    // after the current day
+    // referencing function in holiday library
     getNextOccurenceOfDate(month: number, day: number): Date {
-        let thisMoment = this.toMoment();
-        let this_year = new Date(thisMoment.year(), month, day);
-        let next_year = new Date(thisMoment.year() + 1, month, day);
-        // console.log(this_year);
-        // console.log(next_year);
-        if (thisMoment.month() < month) {
-            return this_year;
-        } else {
-            if (thisMoment.month() === month && thisMoment.day() < day) {
-                return this_year;
-            }
-        }
-        return next_year;
+        return getNextOccurenceOfDate.bind(this)(month, day);
     }
 
     // designed to one-line adding/subtracting multiple date parts / values
     // to a date obj
-    addFullDate(data: TimeChunk): MtDate {
+    addFullDate(data: TimeChunk): RelativityDate {
         if (data.year !== null && data.year !== 0) {
             this.add(data.year, DateParts.years);
         }
@@ -306,7 +235,7 @@ export class MtDate implements IMtDate {
         }
         return this;
     }
-    subtractFullDate(data: TimeChunk): MtDate {
+    subtractFullDate(data: TimeChunk): RelativityDate {
         if (data.year !== null && data.year !== 0) {
             this.subtract(data.year, DateParts.years);
         }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MtDate } from '../../../../../dist';
+import { RelativityDate } from '../../../../../dist';
 
 @Component({
     selector: 'app-test',
@@ -8,7 +8,7 @@ import { MtDate } from '../../../../../dist';
 })
 export class TimeDescriptionComponent implements OnInit {
     outputArr: { date: string; priority: string; desc: string }[];
-    dateObject: MtDate;
+    dateObject: RelativityDate;
     createEvent = new FormGroup({
         key1: new FormControl('', [Validators.required]),
         key2: new FormControl('', [Validators.required]),
@@ -28,7 +28,7 @@ export class TimeDescriptionComponent implements OnInit {
 
         const newDate = new Date(year, month, day);
         this.outputArr.push({
-            date: newDate.mtDate.format('MM/DD/YYYY').toString(),
+            date: newDate.relativityDate.format('MM/DD/YYYY').toString(),
             desc: description,
             priority: priority
         });
