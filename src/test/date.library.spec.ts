@@ -1,18 +1,17 @@
 import {} from 'jasmine';
-import { async } from '@angular/core/testing';
 import { RelativityDate, DateParts } from '../date.library';
 import { isMoment } from 'moment';
 
-function getJanuaryFirst2018StartingDate(): Date {
+function getFebruraryFirst2018StartingDate(): Date {
     return new Date(2018, 1, 1);
 }
 
-function getSeptemberTwentyFifth2018StartingDate(): Date {
+function getOctoberTwentyFifth2018StartingDate(): Date {
     return new Date(2018, 9, 25);
 }
 
 describe('date.libary', () => {
-    const januaryFirst2018 = getJanuaryFirst2018StartingDate();
+    const februaryFirst2018 = getFebruraryFirst2018StartingDate();
     const twoYearsMore = new Date(2020, 1, 1);
     const fourMonthsMore = new Date(2018, 5, 1);
     const twentyDaysMore = new Date(2018, 1, 21);
@@ -23,7 +22,7 @@ describe('date.libary', () => {
     const fourQuartersMore = new Date(2019, 1, 1);
     const twoWeeksmore = new Date(2018, 1, 15);
     const yaDefault = new Date(2018, 1, 1);
-    const septemberTwentyFifth2018 = getSeptemberTwentyFifth2018StartingDate();
+    const octoberTwentyFith2018 = getOctoberTwentyFifth2018StartingDate();
     const twoYearsLess = new Date(2016, 9, 25);
     const fourMonthsLess = new Date(2018, 5, 25);
     const twentyDaysLess = new Date(2018, 9, 5);
@@ -36,7 +35,7 @@ describe('date.libary', () => {
 
     describe('add time', () => {
         describe('without asReference', () => {
-            const startingDate = getJanuaryFirst2018StartingDate();
+            const startingDate = getFebruraryFirst2018StartingDate();
 
             beforeEach(() => {
                 relativityDate = new RelativityDate(startingDate);
@@ -45,62 +44,82 @@ describe('date.libary', () => {
             it('should add years but not change startingDate', () => {
                 const value = relativityDate.add(2, DateParts.years).date;
                 expect(value.getTime()).toBe(twoYearsMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add quarters but not change startingDate', () => {
                 const value = relativityDate.add(4, DateParts.quarters).date;
                 expect(value.getTime()).toBe(fourQuartersMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add months but not change startingDate', () => {
                 const value = relativityDate.add(4, DateParts.months).date;
                 expect(value.getTime()).toBe(fourMonthsMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add weeks but not change startingDate', () => {
                 const value = relativityDate.add(2, DateParts.weeks).date;
                 expect(value.getTime()).toBe(twoWeeksmore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add days but not change startingDate', () => {
                 const value = relativityDate.add(20, DateParts.days).date;
                 expect(value.getTime()).toBe(twentyDaysMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add hours but not change startingDate', () => {
                 const value = relativityDate.add(7, DateParts.hours).date;
                 expect(value.getTime()).toBe(sevenHoursMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add minutes but not change startingDate', () => {
                 const value = relativityDate.add(30, DateParts.minutes).date;
                 expect(value.getTime()).toBe(thirtyMinutesMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add seconds but not change startingDate', () => {
                 const value = relativityDate.add(10, DateParts.seconds).date;
                 expect(value.getTime()).toBe(tenSecondsMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add milliseconds but not change startingDate', () => {
                 const value = relativityDate.add(9, DateParts.milliseconds)
                     .date;
                 expect(value.getTime()).toBe(nineMillisecondsMore.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
 
             it('should add default but not change startingDate', () => {
                 const value = relativityDate.add(0, null).date;
                 expect(value.getTime()).toBe(yaDefault.getTime());
-                expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
+                expect(startingDate.getTime()).toBe(
+                    februaryFirst2018.getTime()
+                );
             });
         });
 
@@ -108,7 +127,7 @@ describe('date.libary', () => {
             let startingDate: Date;
 
             beforeEach(() => {
-                startingDate = getJanuaryFirst2018StartingDate();
+                startingDate = getFebruraryFirst2018StartingDate();
                 relativityDate = new RelativityDate(startingDate, true);
             });
 
@@ -163,7 +182,7 @@ describe('date.libary', () => {
 
     describe('subtract time', () => {
         describe('without asReference', () => {
-            const startingDate = getSeptemberTwentyFifth2018StartingDate();
+            const startingDate = getOctoberTwentyFifth2018StartingDate();
 
             beforeEach(() => {
                 relativityDate = new RelativityDate(startingDate);
@@ -173,7 +192,7 @@ describe('date.libary', () => {
                 const value = relativityDate.subtract(2, DateParts.years).date;
                 expect(value.getTime()).toBe(twoYearsLess.getTime());
                 expect(startingDate.getTime()).toBe(
-                    septemberTwentyFifth2018.getTime()
+                    octoberTwentyFith2018.getTime()
                 );
             });
 
@@ -181,7 +200,7 @@ describe('date.libary', () => {
                 const value = relativityDate.subtract(4, DateParts.months).date;
                 expect(value.getTime()).toBe(fourMonthsLess.getTime());
                 expect(startingDate.getTime()).toBe(
-                    septemberTwentyFifth2018.getTime()
+                    octoberTwentyFith2018.getTime()
                 );
             });
 
@@ -189,7 +208,7 @@ describe('date.libary', () => {
                 const value = relativityDate.subtract(20, DateParts.days).date;
                 expect(value.getTime()).toBe(twentyDaysLess.getTime());
                 expect(startingDate.getTime()).toBe(
-                    septemberTwentyFifth2018.getTime()
+                    octoberTwentyFith2018.getTime()
                 );
             });
 
@@ -197,7 +216,7 @@ describe('date.libary', () => {
                 const value = relativityDate.subtract(7, DateParts.hours).date;
                 expect(value.getTime()).toBe(sevenHoursLess.getTime());
                 expect(startingDate.getTime()).toBe(
-                    septemberTwentyFifth2018.getTime()
+                    octoberTwentyFith2018.getTime()
                 );
             });
 
@@ -206,7 +225,7 @@ describe('date.libary', () => {
                     .date;
                 expect(value.getTime()).toBe(thirtyMinutesLess.getTime());
                 expect(startingDate.getTime()).toBe(
-                    septemberTwentyFifth2018.getTime()
+                    octoberTwentyFith2018.getTime()
                 );
             });
 
@@ -215,7 +234,7 @@ describe('date.libary', () => {
                     .date;
                 expect(value.getTime()).toBe(tenSecondsLess.getTime());
                 expect(startingDate.getTime()).toBe(
-                    septemberTwentyFifth2018.getTime()
+                    octoberTwentyFith2018.getTime()
                 );
             });
 
@@ -224,7 +243,7 @@ describe('date.libary', () => {
                     .date;
                 expect(value.getTime()).toBe(nineMillisecondsLess.getTime());
                 expect(startingDate.getTime()).toBe(
-                    septemberTwentyFifth2018.getTime()
+                    octoberTwentyFith2018.getTime()
                 );
             });
         });
@@ -233,7 +252,7 @@ describe('date.libary', () => {
             let startingDate: Date;
 
             beforeEach(() => {
-                startingDate = getSeptemberTwentyFifth2018StartingDate();
+                startingDate = getOctoberTwentyFifth2018StartingDate();
                 relativityDate = new RelativityDate(startingDate, true);
             });
 
@@ -289,7 +308,7 @@ describe('date.libary', () => {
     });
 
     describe('format', () => {
-        const startingDate = getSeptemberTwentyFifth2018StartingDate();
+        const startingDate = getOctoberTwentyFifth2018StartingDate();
 
         beforeEach(() => {
             relativityDate = new RelativityDate(startingDate);
@@ -352,7 +371,7 @@ describe('date.libary', () => {
     });
 
     describe('toMoment', () => {
-        const startingDate = getSeptemberTwentyFifth2018StartingDate();
+        const startingDate = getOctoberTwentyFifth2018StartingDate();
 
         beforeEach(() => {
             relativityDate = new RelativityDate(startingDate);
