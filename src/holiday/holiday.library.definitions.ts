@@ -7,7 +7,7 @@ export interface IDayResolver {
 }
 
 /**
- * interface for a holiday definition which is used to figure out
+ * @description interface for a holiday definition which is used to figure out
  * holidays throughout the year
  */
 export interface IHolidayDefinition {
@@ -18,6 +18,9 @@ export interface IHolidayDefinition {
     usesObservanceRules?: boolean; // should holiday observance rules be used
 }
 
+/**
+ * @enum defines months by name for readability
+ */
 export enum Months {
     January,
     February,
@@ -32,7 +35,9 @@ export enum Months {
     November,
     December
 }
-
+/**
+ * @enum defines days of the week (Sun-Sat)
+ */
 export enum DaysOfTheWeek {
     Sunday,
     Monday,
@@ -42,7 +47,10 @@ export enum DaysOfTheWeek {
     Friday,
     Saturday
 }
-
+/**
+ * @enum defines how many weeks for holidays that depend on day of the week in a certain week
+ * instead of a specific date (i.e. Thanksgiving)
+ */
 export enum HowManyWeeks {
     first,
     second,
