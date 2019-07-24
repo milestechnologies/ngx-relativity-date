@@ -8,19 +8,11 @@ import {
     anyHolidayResolver,
     lastDayOfTheWeekInTheMonthResolver
 } from './holiday/holiday-resolvers.library';
+import { IWorkWeekDefinition } from './workweek/workweek.library';
 
 export interface IDateModuleConfiguration {
     defaultFormatString?: string;
-    workWeek?: [
-        // weekday indexed from 0 -> 6 / Sun -> Sat
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number },
-        { start: number; end: number }
-    ];
+    workWeek?: IWorkWeekDefinition[];
     holidays?: IHolidayDefinition[]; // change to expect Date type
 }
 
