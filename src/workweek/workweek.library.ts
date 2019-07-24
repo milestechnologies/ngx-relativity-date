@@ -1,4 +1,4 @@
-import { MtDate } from '../../dist/public_api';
+import { MtDate } from '../date.library';
 
 /*
  * interface for work week definition
