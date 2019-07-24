@@ -18,15 +18,6 @@ export interface IHolidayDefinition {
     usesObservanceRules?: boolean; // should holiday observance rules be used
 }
 
-/**
- * would be private
- */
-export interface IHolidayResolved {
-    description: string;
-    month: number;
-    day: number; // specific day
-}
-
 export enum Months {
     January,
     February,

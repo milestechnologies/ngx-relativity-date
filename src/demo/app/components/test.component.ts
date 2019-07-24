@@ -19,11 +19,6 @@ export class TestComponent implements OnInit {
     ngOnInit(): void {
         // defaults to now
         let date = new Date();
-        let obj = {
-            sunday: 'sunday',
-            tuesday: 'tuesday'
-        };
-        console.log(obj[0]);
         // let secondDate = date.mtDate.getNextOccurenceOfDate(11, 25);
         let secondDate = date.mtDate.getNextOccurenceOfDate(Months.May, 25);
         console.log(date);

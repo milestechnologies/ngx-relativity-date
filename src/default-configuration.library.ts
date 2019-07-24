@@ -12,7 +12,7 @@ import { IWorkWeekDefinition } from './workweek/workweek.library';
 
 export interface IDateModuleConfiguration {
     defaultFormatString?: string;
-    workWeek?: IWorkWeekDefinition[];
+    workWeek?: IWorkWeekDefinition;
     holidays?: IHolidayDefinition[]; // change to expect Date type
 }
 
@@ -97,15 +97,15 @@ export const memorialDayDefinition: IHolidayDefinition = {
 
 export const defaultDateModuleConfig: IDateModuleConfiguration = {
     defaultFormatString: 'dddd, MMMM Do YYYY, h:mm:ss a',
-    workWeek: [
-        { start: null, end: null },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: 9, end: 17 },
-        { start: null, end: null }
-    ],
+    workWeek: {
+        sunday: { start: null, end: null },
+        monday: { start: 9, end: 17 },
+        tuesday: { start: 9, end: 17 },
+        wednesday: { start: 9, end: 17 },
+        thursday: { start: 9, end: 17 },
+        friday: { start: 9, end: 17 },
+        saturday: { start: null, end: null }
+    },
     holidays: [
         christmasDayDefinition,
         laborDayDefinintion,
@@ -117,10 +117,5 @@ export const defaultDateModuleConfig: IDateModuleConfiguration = {
         veteransDayDefinition,
         thanksgivingDayDefinition,
         memorialDayDefinition
-        // {
-        //     desc: 'Memorial Day', // changes from year to year
-        //     month: 4,
-        //     day: 27
-        // },
     ]
 };
