@@ -28,11 +28,12 @@ export const weekdayKey = [
 export function isDuringWorkHours(): boolean {
     const mtDate: MtDate = this;
     let thisMoment = mtDate.toMoment();
-    console.log(mtDate.config.workWeek[weekdayKey[thisMoment.weekday()]]);
+    console.log(mtDate);
     if (
         thisMoment.hour() >=
             mtDate.config.workWeek[weekdayKey[thisMoment.weekday()]].start &&
-        thisMoment.hour() <= mtDate.config.workWeek[thisMoment.weekday()].end
+        thisMoment.hour() <=
+            mtDate.config.workWeek[weekdayKey[thisMoment.weekday()]].end
     ) {
         // console.log('you should be at work right now!');
         return true;
