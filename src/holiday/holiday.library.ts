@@ -1,4 +1,4 @@
-import { DateParts, MtDate } from '../date.library';
+import { DateParts, RelativityDate } from '../date.library';
 import {
     IHolidayDefinition,
     DaysOfTheWeek
@@ -11,11 +11,11 @@ import {
  * @returns Description of Holiday if date matches a holiday or false if date does not match holiday
  */
 export function isHoliday(): string | boolean {
-    const mtDate: MtDate = this;
-    for (let holiday of mtDate.config.holidays) {
-        if (holiday.month === mtDate.date.getMonth()) {
-            let instanceOfDay = getInstanceOfDay.bind(mtDate)(holiday);
-            if (instanceOfDay === mtDate.date.getDate()) {
+    const relativityDate: RelativityDate = this;
+    for (let holiday of relativityDate.config.holidays) {
+        if (holiday.month === relativityDate.date.getMonth()) {
+            let instanceOfDay = getInstanceOfDay.bind(relativityDate)(holiday);
+            if (instanceOfDay === relativityDate.date.getDate()) {
                 return holiday.description;
             }
         }
@@ -31,14 +31,14 @@ export function isHoliday(): string | boolean {
  * @returns the day the holiday will be observed on
  */
 function getInstanceOfDay(holiday: IHolidayDefinition): number {
-    const mtDate: MtDate = this;
+    const relativityDate: RelativityDate = this;
     // if property day exists - else dayResolver
     let instanceOfDay = holiday.day
         ? holiday.day
-        : holiday.dayResolver.resolver.bind(holiday)(mtDate.date);
+        : holiday.dayResolver.resolver.bind(holiday)(relativityDate.date);
     if (holiday.usesObservanceRules) {
         // apply observance rules
-        instanceOfDay = applyObservanceRules.bind(mtDate)(instanceOfDay);
+        instanceOfDay = applyObservanceRules.bind(relativityDate)(instanceOfDay);
     }
     return instanceOfDay;
 }
@@ -50,19 +50,19 @@ function getInstanceOfDay(holiday: IHolidayDefinition): number {
  * @returns date after modification, if date falls on weekend, else returns date
  */
 function applyObservanceRules(instanceOfDay: number): number {
-    const mtDate: MtDate = this;
+    const relativityDate: RelativityDate = this;
     let tempDate = new Date(
-        mtDate.date.getFullYear(),
-        mtDate.date.getMonth(),
+        relativityDate.date.getFullYear(),
+        relativityDate.date.getMonth(),
         instanceOfDay
     );
     if (tempDate.getDay() === DaysOfTheWeek.Saturday) {
         // friday off
-        tempDate.mtDate.subtract(1, DateParts.days);
+        tempDate.relativityDate.subtract(1, DateParts.days);
     }
     if (tempDate.getDay() === DaysOfTheWeek.Sunday) {
         // monday off
-        tempDate.mtDate.add(1, DateParts.days);
+        tempDate.relativityDate.add(1, DateParts.days);
     }
     return tempDate.getDate();
 }
@@ -70,28 +70,28 @@ function applyObservanceRules(instanceOfDay: number): number {
 // determines the next holiday and returns the string from
 // calling .to(next occurence of holiday)
 export function howLongUntilNextHoliday(): string {
-    const mtDate: MtDate = this;
+    const relativityDate: RelativityDate = this;
     let retDate = new Date();
     let firstElement = true;
     let nextOcc: Date;
-    for (let holiday of mtDate.config.holidays) {
-        nextOcc = getNextOccurenceOfDate.bind(mtDate)(
+    for (let holiday of relativityDate.config.holidays) {
+        nextOcc = getNextOccurenceOfDate.bind(relativityDate)(
             holiday.month,
             holiday.day
         );
-        if (firstElement || retDate.mtDate.isAfterDate(nextOcc)) {
+        if (firstElement || retDate.relativityDate.isAfterDate(nextOcc)) {
             retDate = nextOcc;
             firstElement = false;
         }
     }
-    return mtDate.to(nextOcc);
+    return relativityDate.to(nextOcc);
 }
 
 // build Date obj of the next occurence of the next month/day combination
 // after the current day
 export function getNextOccurenceOfDate(month: number, day: number): Date {
-    const mtDate: MtDate = this;
-    let thisMoment = mtDate.toMoment();
+    const relativityDate: RelativityDate = this;
+    let thisMoment = relativityDate.toMoment();
     let this_year = new Date(thisMoment.year(), month, day);
     let next_year = new Date(thisMoment.year() + 1, month, day);
     if (thisMoment.month() < month) {
