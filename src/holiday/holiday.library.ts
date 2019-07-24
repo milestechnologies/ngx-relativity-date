@@ -75,7 +75,7 @@ export function howLongUntilNextHoliday(): string {
 
 // build Date obj of the next occurence of the next month/day combination
 // after the current day
-function getNextOccurenceOfDate(month: number, day: number): Date {
+export function getNextOccurenceOfDate(month: number, day: number): Date {
     const mtDate: MtDate = this;
     let thisMoment = mtDate.toMoment();
     let this_year = new Date(thisMoment.year(), month, day);

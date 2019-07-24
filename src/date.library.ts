@@ -4,7 +4,11 @@ import {
 } from './default-configuration.library';
 import * as momentImported from 'moment';
 import { TimeChunk } from './time-chunk.library';
-import { isHoliday, howLongUntilNextHoliday } from './holiday/holiday.library';
+import {
+    isHoliday,
+    howLongUntilNextHoliday,
+    getNextOccurenceOfDate
+} from './holiday/holiday.library';
 import { isDuringWorkHours } from './workweek/workweek.library';
 const moment = momentImported;
 
@@ -198,6 +202,11 @@ export class MtDate implements IMtDate {
     // referencing function in holiday library
     howLongUntilNextHoliday(): string {
         return howLongUntilNextHoliday.bind(this)();
+    }
+
+    // referencing function in holiday library
+    getNextOccurenceOfDate(month: number, day: number): Date {
+        return getNextOccurenceOfDate.bind(this)(month, day);
     }
 
     // designed to one-line adding/subtracting multiple date parts / values
