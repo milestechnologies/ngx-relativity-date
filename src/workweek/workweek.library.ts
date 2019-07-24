@@ -1,4 +1,4 @@
-import { MtDate } from '../date.library';
+import { RelativityDate } from '../date.library';
 
 /*
  * interface for work week definition
@@ -26,14 +26,14 @@ export const weekdayKey = [
 // returns whether this date is within the work hours defined
 // by the config
 export function isDuringWorkHours(): boolean {
-    const mtDate: MtDate = this;
-    let thisMoment = mtDate.toMoment();
-    console.log(mtDate);
+    const relativityDate: RelativityDate = this;
+    let thisMoment = relativityDate.toMoment();
+    console.log(relativityDate);
     if (
         thisMoment.hour() >=
-            mtDate.config.workWeek[weekdayKey[thisMoment.weekday()]].start &&
+            relativityDate.config.workWeek[weekdayKey[thisMoment.weekday()]].start &&
         thisMoment.hour() <=
-            mtDate.config.workWeek[weekdayKey[thisMoment.weekday()]].end
+            relativityDate.config.workWeek[weekdayKey[thisMoment.weekday()]].end
     ) {
         // console.log('you should be at work right now!');
         return true;

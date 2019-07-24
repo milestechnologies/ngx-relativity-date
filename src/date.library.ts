@@ -26,22 +26,22 @@ export enum DateParts {
 
 type momentDatePart = 'y' | 'Q' | 'M' | 'w' | 'd' | 'h' | 'm' | 's' | 'ms';
 
-export interface IMtDate {
+export interface IRelativityDate {
     date: Date;
-    add(amount: number, part: DateParts): MtDate;
-    subtract(amount: number, part: DateParts): MtDate;
+    add(amount: number, part: DateParts): RelativityDate;
+    subtract(amount: number, part: DateParts): RelativityDate;
     format(tokenString?: string): string;
     from(date?: Date): string;
     to(date?: Date): string;
     toMoment(): momentImported.Moment;
 }
 
-export class MtDate implements IMtDate {
+export class RelativityDate implements IRelativityDate {
     date: Date;
     config: IDateModuleConfiguration;
 
     /**
-     * Create an MtDate object
+     * Create an RelativityDate object
      * @param dateParam the date object to use for the initial value.  Defaults to now.
      * @param asReference boolean flag indicating whether the dateParam should be handled
      * as a reference object.  Defaults to false.
@@ -68,17 +68,17 @@ export class MtDate implements IMtDate {
         }
     }
 
-    // returns the configuration object of this MtDate
+    // returns the configuration object of this RelativityDate
     getConfig(): any {
         return this.config;
     }
 
     /**
-     * Add to the mtDate value using a specified datePart.
+     * Add to the relativityDate value using a specified datePart.
      * @param amount integer amount to add.
      * @param part date part enumerator specifying which part of the date to add to.
      */
-    add(amount: number, part: DateParts): MtDate {
+    add(amount: number, part: DateParts): RelativityDate {
         const date = moment(this.date)
             .add(amount, this.getMomentDatePart(part))
             .toDate();
@@ -87,11 +87,11 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Subtract from the mtDate value using a specified datePart.
+     * Subtract from the relativityDate value using a specified datePart.
      * @param amount integer amount to subtract.
      * @param part date part enumerator specifying which part of the date to subtract from.
      */
-    subtract(amount: number, part: DateParts): MtDate {
+    subtract(amount: number, part: DateParts): RelativityDate {
         const date = moment(this.date)
             .subtract(amount, this.getMomentDatePart(part))
             .toDate();
@@ -135,7 +135,7 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Get a string reprensentation of the mtDate.
+     * Get a string reprensentation of the relativityDate.
      * @param tokenString string including tokens that will be replaced with date parts.
      * Defaults to 'YYYY-MM-DDTHH:mm:ssZ'.
      * documented here https://momentjs.com/docs/#/displaying/format/
@@ -150,8 +150,8 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Get a string representing the time from the date param to the mtDate.
-     * @param date the date to start from when comparing the mtDate.  Defaults to now.
+     * Get a string representing the time from the date param to the relativityDate.
+     * @param date the date to start from when comparing the relativityDate.  Defaults to now.
      */
     from(date?: Date): string {
         if (!date) {
@@ -161,8 +161,8 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Get a string representing the time from the mtDate to the date param.
-     * @param date the date to end at when comparing the mtDate.  Defaults to now.
+     * Get a string representing the time from the relativityDate to the date param.
+     * @param date the date to end at when comparing the relativityDate.  Defaults to now.
      */
     to(date?: Date): string {
         if (!date) {
@@ -172,8 +172,8 @@ export class MtDate implements IMtDate {
     }
 
     /**
-     * Provide the mtDate as a Moment object with all of the moment
-     * library functions accessible.  Will have no reference back to the mtDate object.
+     * Provide the relativityDate as a Moment object with all of the moment
+     * library functions accessible.  Will have no reference back to the relativityDate object.
      * Moment documentation here http://momentjs.com/docs/
      */
     toMoment(): momentImported.Moment {
@@ -183,10 +183,10 @@ export class MtDate implements IMtDate {
     // helper functions to allow us to quickly check against the date
     // object to see which date comes first
     isBeforeDate(date: Date): boolean {
-        return this.toMoment().diff(date.mtDate.toMoment()) < 0;
+        return this.toMoment().diff(date.relativityDate.toMoment()) < 0;
     }
     isAfterDate(date: Date): boolean {
-        return this.toMoment().diff(date.mtDate.toMoment()) > 0;
+        return this.toMoment().diff(date.relativityDate.toMoment()) > 0;
     }
 
     // referencing function in workweek library
@@ -211,7 +211,7 @@ export class MtDate implements IMtDate {
 
     // designed to one-line adding/subtracting multiple date parts / values
     // to a date obj
-    addFullDate(data: TimeChunk): MtDate {
+    addFullDate(data: TimeChunk): RelativityDate {
         if (data.year !== null && data.year !== 0) {
             this.add(data.year, DateParts.years);
         }
@@ -235,7 +235,7 @@ export class MtDate implements IMtDate {
         }
         return this;
     }
-    subtractFullDate(data: TimeChunk): MtDate {
+    subtractFullDate(data: TimeChunk): RelativityDate {
         if (data.year !== null && data.year !== 0) {
             this.subtract(data.year, DateParts.years);
         }

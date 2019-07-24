@@ -11,14 +11,14 @@ export function anyHolidayResolver(date: Date): number {
 
 export function lastDayOfTheWeekInTheMonthResolver(date: Date): number {
     const holiday: IHolidayDefinition = this;
-    const nextMonth = date.mtDate.add(1, DateParts.months).date;
+    const nextMonth = date.relativityDate.add(1, DateParts.months).date;
     let dayOfHoliday = getFirstDayOfTheWeekInTheMonth(holiday, nextMonth);
     let newDate = new Date(
         nextMonth.getFullYear(),
         nextMonth.getMonth(),
         dayOfHoliday
     );
-    return newDate.mtDate.subtract(1, DateParts.weeks).date.getDate();
+    return newDate.relativityDate.subtract(1, DateParts.weeks).date.getDate();
 }
 
 function getFirstDayOfTheWeekInTheMonth(

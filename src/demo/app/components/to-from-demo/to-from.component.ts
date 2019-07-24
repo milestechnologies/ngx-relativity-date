@@ -36,10 +36,10 @@ export class ToFromComponent {
             return;
         }
         if (toOrFrom === 'to') {
-                console.log(this.newDate.mtDate.to(toFromDate));
+                console.log(this.newDate.relativityDate.to(toFromDate));
         }
         if (toOrFrom === 'from') {
-                console.log(toFromDate.mtDate.to(this.newDate));
+                console.log(toFromDate.relativityDate.to(this.newDate));
         }
     }
 }
