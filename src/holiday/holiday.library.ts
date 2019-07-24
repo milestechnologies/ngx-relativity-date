@@ -6,6 +6,10 @@ import {
 
 // isHoliday function returns a string of the holiday name
 // if the date object is a holiday and false if it does not
+/**
+ * @description Compares date against Holidays
+ * @returns Description of Holiday if date matches a holiday or false if date does not match holiday
+ */
 export function isHoliday(): string | boolean {
     const mtDate: MtDate = this;
     for (let holiday of mtDate.config.holidays) {
@@ -21,6 +25,11 @@ export function isHoliday(): string | boolean {
 
 // passes in a holiday object
 // returns the day that the holiday will be observed on
+/**
+ * @description checks which day a holiday will fall on and returns the day it will be observed on
+ * @param holiday interface which holds the definition of a holiday
+ * @returns the day the holiday will be observed on
+ */
 function getInstanceOfDay(holiday: IHolidayDefinition): number {
     const mtDate: MtDate = this;
     // if property day exists - else dayResolver
@@ -35,6 +44,11 @@ function getInstanceOfDay(holiday: IHolidayDefinition): number {
 }
 
 // handles only the observance rules
+/**
+ * @description Handles observance rules should holiday fall on a weekend
+ * @param instanceOfDay Day of holiday, is converted to day of week and modified to fall on weekday if needed
+ * @returns date after modification, if date falls on weekend, else returns date
+ */
 function applyObservanceRules(instanceOfDay: number): number {
     const mtDate: MtDate = this;
     let tempDate = new Date(

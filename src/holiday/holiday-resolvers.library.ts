@@ -1,6 +1,11 @@
 import { IHolidayDefinition } from './holiday.library.definitions';
 import { DateParts } from '../date.library';
 
+/**
+ * @description used to find a specific day a specific amount of weeks into a month
+ * @param date stores the date
+ * @returns dayOfHoliday, the date of the holiday
+ */
 export function anyHolidayResolver(date: Date): number {
     const holiday: IHolidayDefinition = this;
     let dayOfHoliday = getFirstDayOfTheWeekInTheMonth(holiday, date);
@@ -9,6 +14,11 @@ export function anyHolidayResolver(date: Date): number {
     return dayOfHoliday;
 }
 
+/**
+ * @description calculates the last day of week of the month (i.e. the last tuesday)
+ * @param date stores the date
+ * @returns the last day of the month as a date
+ */
 export function lastDayOfTheWeekInTheMonthResolver(date: Date): number {
     const holiday: IHolidayDefinition = this;
     const nextMonth = date.mtDate.add(1, DateParts.months).date;
@@ -21,6 +31,12 @@ export function lastDayOfTheWeekInTheMonthResolver(date: Date): number {
     return newDate.mtDate.subtract(1, DateParts.weeks).date.getDate();
 }
 
+/**
+ * @description returns first day of the week (i.e. the first thursday of the month) in the month
+ * @param holiday definition of the holiday
+ * @param date stores the date
+ * @returns dayOfHoliday, the date of the first occurence of the weekday
+ */
 function getFirstDayOfTheWeekInTheMonth(
     holiday: IHolidayDefinition,
     date: Date
