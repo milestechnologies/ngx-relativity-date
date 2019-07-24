@@ -91,7 +91,8 @@ describe('date.libary', () => {
             });
 
             it('should add milliseconds but not change startingDate', () => {
-                const value = relativityDate.add(9, DateParts.milliseconds).date;
+                const value = relativityDate.add(9, DateParts.milliseconds)
+                    .date;
                 expect(value.getTime()).toBe(nineMillisecondsMore.getTime());
                 expect(startingDate.getTime()).toBe(januaryFirst2018.getTime());
             });
@@ -150,7 +151,8 @@ describe('date.libary', () => {
             });
 
             it('should add milliseconds and change startingDate', () => {
-                const value = relativityDate.add(9, DateParts.milliseconds).date;
+                const value = relativityDate.add(9, DateParts.milliseconds)
+                    .date;
                 expect(value.getTime()).toBe(nineMillisecondsMore.getTime());
                 expect(startingDate.getTime()).toBe(
                     nineMillisecondsMore.getTime()
@@ -200,7 +202,8 @@ describe('date.libary', () => {
             });
 
             it('should add minutes but not change startingDate', () => {
-                const value = relativityDate.subtract(30, DateParts.minutes).date;
+                const value = relativityDate.subtract(30, DateParts.minutes)
+                    .date;
                 expect(value.getTime()).toBe(thirtyMinutesLess.getTime());
                 expect(startingDate.getTime()).toBe(
                     septemberTwentyFifth2018.getTime()
@@ -208,7 +211,8 @@ describe('date.libary', () => {
             });
 
             it('should add seconds but not change startingDate', () => {
-                const value = relativityDate.subtract(10, DateParts.seconds).date;
+                const value = relativityDate.subtract(10, DateParts.seconds)
+                    .date;
                 expect(value.getTime()).toBe(tenSecondsLess.getTime());
                 expect(startingDate.getTime()).toBe(
                     septemberTwentyFifth2018.getTime()
@@ -216,7 +220,8 @@ describe('date.libary', () => {
             });
 
             it('should add milliseconds but not change startingDate', () => {
-                const value = relativityDate.subtract(9, DateParts.milliseconds).date;
+                const value = relativityDate.subtract(9, DateParts.milliseconds)
+                    .date;
                 expect(value.getTime()).toBe(nineMillisecondsLess.getTime());
                 expect(startingDate.getTime()).toBe(
                     septemberTwentyFifth2018.getTime()
@@ -257,7 +262,8 @@ describe('date.libary', () => {
             });
 
             it('should add minutes and change startingDate', () => {
-                const value = relativityDate.subtract(30, DateParts.minutes).date;
+                const value = relativityDate.subtract(30, DateParts.minutes)
+                    .date;
                 expect(value.getTime()).toBe(thirtyMinutesLess.getTime());
                 expect(startingDate.getTime()).toBe(
                     thirtyMinutesLess.getTime()
@@ -265,13 +271,15 @@ describe('date.libary', () => {
             });
 
             it('should add seconds and change startingDate', () => {
-                const value = relativityDate.subtract(10, DateParts.seconds).date;
+                const value = relativityDate.subtract(10, DateParts.seconds)
+                    .date;
                 expect(value.getTime()).toBe(tenSecondsLess.getTime());
                 expect(startingDate.getTime()).toBe(tenSecondsLess.getTime());
             });
 
             it('should add milliseconds and change startingDate', () => {
-                const value = relativityDate.subtract(9, DateParts.milliseconds).date;
+                const value = relativityDate.subtract(9, DateParts.milliseconds)
+                    .date;
                 expect(value.getTime()).toBe(nineMillisecondsLess.getTime());
                 expect(startingDate.getTime()).toBe(
                     nineMillisecondsLess.getTime()
@@ -287,11 +295,10 @@ describe('date.libary', () => {
             relativityDate = new RelativityDate(startingDate);
         });
 
-        // CCC 9-5-2018: this test was removed, because it gets different
-        // answers based on local versus server time.
         it('should return default format when no param passed', () => {
+            // default format is set in config to dddd, MMMM Do YYYY, h:mm:ss a
             const value = relativityDate.format();
-            expect(value).toContain('2018-10-25T00:00:00');
+            expect(value).toContain('Thursday, October 25th 2018');
         });
 
         it('should return custom format when param passed', () => {
