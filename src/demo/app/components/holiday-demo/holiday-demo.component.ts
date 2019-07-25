@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { isHoliday } from 'holiday/holiday.library';
 
 @Component({
     selector: 'app-holiday-demo',
@@ -8,6 +7,7 @@ import { isHoliday } from 'holiday/holiday.library';
 })
 export class HolidayDemoComponent {
     outputDate: string;
+    nextHoliday: string;
     holiday: string | boolean;
     currentDate = new Date();
     form = new FormGroup({
@@ -24,5 +24,6 @@ export class HolidayDemoComponent {
         const date = new Date(year, month, day);
         this.outputDate = date.relativityDate.format('MM/DD/YYYY');
         this.holiday = date.relativityDate.isHoliday();
+        this.nextHoliday = date.relativityDate.howLongUntilNextHoliday();
     }
 }
