@@ -69,7 +69,7 @@ export class RelativityDate implements IRelativityDate {
     }
 
     /**
-     *  returns the configuration object of this RelativityDate
+     *  @returns the configuration object of this RelativityDate
      */
     getConfig(): any {
         return this.config;
@@ -201,7 +201,8 @@ export class RelativityDate implements IRelativityDate {
 
     /**
      * @description referencing function in workweek library
-     * @returns result of isDuringWorkingHours
+     * @returns boolean, whether this date is within the work hours defined
+     * by the config
      */
     isDuringWorkHours(): boolean {
         return isDuringWorkHours.bind(this)();
@@ -209,7 +210,7 @@ export class RelativityDate implements IRelativityDate {
 
     /**
      * @description referencing function in holiday library
-     * @returns
+     * @returns Description of Holiday if date matches a holiday or false if date does not match holiday
      */
     isHoliday(): string | boolean {
         return isHoliday.bind(this)();
@@ -217,7 +218,7 @@ export class RelativityDate implements IRelativityDate {
 
     /**
      * @description referencing function in holiday library
-     * @returns string result of .to for next occurance of holiday
+     * @returns returns the string from calling .to(next occurence of holiday)
      */
     howLongUntilNextHoliday(): string {
         return howLongUntilNextHoliday.bind(this)();
@@ -227,7 +228,7 @@ export class RelativityDate implements IRelativityDate {
      * @description referencing function in holiday library
      * @param month month value passed in
      * @param day day value passed in
-     * @returns the next occurance of the date
+     * @returns next instance of the day/month combo
      */
     getNextOccurenceOfDate(month: number, day: number): Date {
         return getNextOccurenceOfDate.bind(this)(month, day);
