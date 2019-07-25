@@ -6,6 +6,7 @@ import { AddSubtractDateComponent } from './components/add-subtract-date-demo/ad
 import { TimeDescriptionComponent } from './components/time-description-demo/time-description.component';
 import { ToFromComponent } from './components/to-from-demo/to-from.component';
 import { FormatSwitchComponent } from './components/format-switch-demo/format-switch-demo.component';
+import { HolidayDemoComponent } from './components/holiday-demo/holiday-demo.component';
 
 const appRoutes: Routes = [
     {
@@ -31,6 +32,10 @@ const appRoutes: Routes = [
     {
         component: FormatSwitchComponent,
         path: 'formatswitch'
+    },
+    {
+        component: HolidayDemoComponent,
+        path: 'holiday'
     },
     {
         component: SimpleDateRetrievalComponent,

@@ -13,13 +13,14 @@ import { IWorkWeekDefinition } from './workweek/workweek.library';
 export interface IDateModuleConfiguration {
     defaultFormatString?: string;
     workWeek?: IWorkWeekDefinition;
-    holidays?: IHolidayDefinition[]; // change to expect Date type
+    holidays?: IHolidayDefinition[];
 }
 
 export const christmasDayDefinition: IHolidayDefinition = {
     description: 'Christmas Day',
     month: Months.December,
-    day: 25
+    day: 25,
+    usesObservanceRules: true
 };
 export const laborDayDefinintion: IHolidayDefinition = {
     description: 'Labor Day',
@@ -34,7 +35,8 @@ export const laborDayDefinintion: IHolidayDefinition = {
 export const newYearsDayDefinition: IHolidayDefinition = {
     description: 'New Years Day',
     month: Months.January,
-    day: 1
+    day: 1,
+    usesObservanceRules: true
 };
 export const martinLutherKingJrDayDefinition: IHolidayDefinition = {
     description: 'Martin Luther King Jr. Day',
@@ -59,7 +61,8 @@ export const washingtonsBirthdayDefinition: IHolidayDefinition = {
 export const independenceDayDefinition: IHolidayDefinition = {
     description: 'Independence Day',
     month: Months.July,
-    day: 4
+    day: 4,
+    usesObservanceRules: true
 };
 export const columbusDayDefinition: IHolidayDefinition = {
     description: 'Columbus Day',
@@ -74,7 +77,8 @@ export const columbusDayDefinition: IHolidayDefinition = {
 export const veteransDayDefinition: IHolidayDefinition = {
     description: 'Veterans Day',
     month: Months.November,
-    day: 11
+    day: 11,
+    usesObservanceRules: true
 };
 export const thanksgivingDayDefinition: IHolidayDefinition = {
     description: 'Thanksgiving Day',
