@@ -38,7 +38,9 @@ function getInstanceOfDay(holiday: IHolidayDefinition): number {
         : holiday.dayResolver.resolver.bind(holiday)(relativityDate.date);
     if (holiday.usesObservanceRules) {
         // apply observance rules
-        instanceOfDay = applyObservanceRules.bind(relativityDate)(instanceOfDay);
+        instanceOfDay = applyObservanceRules.bind(relativityDate)(
+            instanceOfDay
+        );
     }
     return instanceOfDay;
 }

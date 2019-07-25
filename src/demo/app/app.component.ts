@@ -39,6 +39,12 @@ import { Component } from '@angular/core';
                         routerLinkActive="active"
                         >Format</a
                     >
+                    <a
+                        class="nav-link"
+                        routerLink="/holiday"
+                        routerLinkActive="active"
+                        >Holiday</a
+                    >
                     <button
                         class="navbar-toggler"
                         type="button"

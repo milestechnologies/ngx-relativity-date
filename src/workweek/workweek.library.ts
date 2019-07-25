@@ -36,14 +36,13 @@ export function isDuringWorkHours(): boolean {
     console.log(relativityDate);
     if (
         thisMoment.hour() >=
-            relativityDate.config.workWeek[weekdayKey[thisMoment.weekday()]].start &&
+            relativityDate.config.workWeek[weekdayKey[thisMoment.weekday()]]
+                .start &&
         thisMoment.hour() <=
             relativityDate.config.workWeek[weekdayKey[thisMoment.weekday()]].end
     ) {
-        // console.log('you should be at work right now!');
         return true;
     } else {
-        // console.log('take a load off, go home and relax!');
         return false;
     }
 }
