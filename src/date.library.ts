@@ -68,7 +68,9 @@ export class RelativityDate implements IRelativityDate {
         }
     }
 
-    // returns the configuration object of this RelativityDate
+    /**
+     *  returns the configuration object of this RelativityDate
+     */
     getConfig(): any {
         return this.config;
     }
@@ -180,37 +182,63 @@ export class RelativityDate implements IRelativityDate {
         return moment(this.date);
     }
 
-    // helper functions to allow us to quickly check against the date
-    // object to see which date comes first
+    /**
+     * @description Checks against date object to see which date came first
+     * @param date holds a date object
+     * @returns whether the date was before
+     */
     isBeforeDate(date: Date): boolean {
         return this.toMoment().diff(date.relativityDate.toMoment()) < 0;
     }
+    /**
+     * @description Checks against date object to see which date came first
+     * @param date holds a date object
+     * @returns whether the date was after
+     */
     isAfterDate(date: Date): boolean {
         return this.toMoment().diff(date.relativityDate.toMoment()) > 0;
     }
 
-    // referencing function in workweek library
+    /**
+     * @description referencing function in workweek library
+     * @returns result of isDuringWorkingHours
+     */
     isDuringWorkHours(): boolean {
         return isDuringWorkHours.bind(this)();
     }
 
-    // referencing function in holiday library
+    /**
+     * @description referencing function in holiday library
+     * @returns
+     */
     isHoliday(): string | boolean {
         return isHoliday.bind(this)();
     }
 
-    // referencing function in holiday library
+    /**
+     * @description referencing function in holiday library
+     * @returns string result of .to for next occurance of holiday
+     */
     howLongUntilNextHoliday(): string {
         return howLongUntilNextHoliday.bind(this)();
     }
 
-    // referencing function in holiday library
+    /**
+     * @description referencing function in holiday library
+     * @param month month value passed in
+     * @param day day value passed in
+     * @returns the next occurance of the date
+     */
     getNextOccurenceOfDate(month: number, day: number): Date {
         return getNextOccurenceOfDate.bind(this)(month, day);
     }
 
-    // designed to one-line adding/subtracting multiple date parts / values
-    // to a date obj
+    /**
+     * @description designed to one-line adding/subtracting multiple date parts / value
+     * to a date obj
+     * @param data passed in TimeChunk
+     * @returns result of adding time chunk to date
+     */
     addFullDate(data: TimeChunk): RelativityDate {
         if (data.year !== null && data.year !== 0) {
             this.add(data.year, DateParts.years);
@@ -235,6 +263,12 @@ export class RelativityDate implements IRelativityDate {
         }
         return this;
     }
+    /**
+     * @description designed to one-line adding/subtracting multiple date parts / value
+     * to a date obj
+     * @param data passed in TimeChunk
+     * @returns result of subtracting TimeChunk from date
+     */
     subtractFullDate(data: TimeChunk): RelativityDate {
         if (data.year !== null && data.year !== 0) {
             this.subtract(data.year, DateParts.years);
