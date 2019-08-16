@@ -6,7 +6,7 @@ describe('NgxDateModuleTestTemplate', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [],
-            imports: [BrowserModule],
+            imports: [BrowserModule]
         });
     }));
 
@@ -18,4 +18,3 @@ describe('NgxDateModuleTestTemplate', () => {
         });
     });
 });
-
