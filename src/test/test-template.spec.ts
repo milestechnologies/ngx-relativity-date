@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { async, TestBed } from '@angular/core/testing';
 import {} from 'jasmine';
 
-describe('NgxDateModuleTestTemplate', () => {
+describe('NgxRelativityDateModuleTestTemplate', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [],

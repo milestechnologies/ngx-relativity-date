@@ -7,7 +7,10 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { AppComponent } from './app.component';
 import { TestComponent } from './components/test.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NgxDateModule, IDateModuleConfiguration } from '../../../dist';
+import {
+    NgxRelativityDateModule,
+    IDateModuleConfiguration
+} from '../../../dist';
 
 const myCustomConfiguration: IDateModuleConfiguration = {}; // TODO
 
@@ -48,8 +51,7 @@ export function hljsLanguages(): any {
         HighlightModule.forRoot({
             languages: hljsLanguages
         }),
-        // NgxDateModule.forRoot(myCustomConfiguration)
-        NgxDateModule.forRoot()
+        NgxRelativityDateModule.forRoot()
     ],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
 })

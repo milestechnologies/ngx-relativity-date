@@ -33,7 +33,7 @@
         "url": "https://github.com/milestechnologies/ngx-relativity-date/issues"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "~0.13.0",
+        "@angular-devkit/build-angular": "^0.13.0",
         "@angular/animations": "^7.2.11",
         "@angular/cli": "^7.3.7",
         "@angular/common": "^7.2.11",
