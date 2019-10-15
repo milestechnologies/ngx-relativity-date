@@ -38,7 +38,9 @@ function getInstanceOfDay(holiday: IHolidayDefinition): number {
         : holiday.dayResolver.resolver.bind(holiday)(relativityDate.date);
     if (holiday.usesObservanceRules) {
         // apply observance rules
-        instanceOfDay = applyObservanceRules.bind(relativityDate)(instanceOfDay);
+        instanceOfDay = applyObservanceRules.bind(relativityDate)(
+            instanceOfDay
+        );
     }
     return instanceOfDay;
 }
@@ -69,6 +71,10 @@ function applyObservanceRules(instanceOfDay: number): number {
 
 // determines the next holiday and returns the string from
 // calling .to(next occurence of holiday)
+/**
+ * @description determines the next holiday
+ * @returns returns the string from calling .to(next occurence of holiday)
+ */
 export function howLongUntilNextHoliday(): string {
     const relativityDate: RelativityDate = this;
     let retDate = new Date();
@@ -89,6 +95,13 @@ export function howLongUntilNextHoliday(): string {
 
 // build Date obj of the next occurence of the next month/day combination
 // after the current day
+/**
+ * @description build Date obj of the next occurence of the next month/day combination
+ * after the current day
+ * @param month number corosponding to month
+ * @param day day of the month
+ * @returns next instance of the day/month combo
+ */
 export function getNextOccurenceOfDate(month: number, day: number): Date {
     const relativityDate: RelativityDate = this;
     let thisMoment = relativityDate.toMoment();

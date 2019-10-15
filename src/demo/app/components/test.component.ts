@@ -20,13 +20,18 @@ export class TestComponent implements OnInit {
         // defaults to now
         let date = new Date();
         // let secondDate = date.relativityDate.getNextOccurenceOfDate(11, 25);
-        let secondDate = date.relativityDate.getNextOccurenceOfDate(Months.May, 25);
-        console.log(date);
+        let secondDate = date.relativityDate.getNextOccurenceOfDate(
+            Months.May,
+            25
+        );
+        console.log(date.relativityDate.howLongUntilNextHoliday());
         console.log(secondDate);
         console.log(secondDate.relativityDate.isHoliday());
         // "Sunday, February 14th 2010, 3:25:50 pm" is the moment format of the date
         this.someText =
-            date.relativityDate.toMoment().format('dddd, MMMM Do YYYY, h:mm:ss a') +
+            date.relativityDate
+                .toMoment()
+                .format('dddd, MMMM Do YYYY, h:mm:ss a') +
             ' :: ' +
             date.relativityDate.isDuringWorkHours();
     }

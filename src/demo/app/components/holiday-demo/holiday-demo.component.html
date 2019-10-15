@@ -1,0 +1,63 @@
+<div class="jumbotron demo-description-block">
+    <h4><em>How it works</em></h4>
+    <p></p>
+</div>
+<hr />
+<br />
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-sm-3">
+            <label>Year</label>
+            <select formControlName="year" class="form-control">
+                <option [ngValue]="2010">2010</option>
+                <option [ngValue]="2011">2011</option>
+                <option [ngValue]="2012">2012</option>
+                <option [ngValue]="2013">2013</option>
+                <option [ngValue]="2014">2014</option>
+                <option [ngValue]="2015">2015</option>
+                <option [ngValue]="2016">2016</option>
+                <option [ngValue]="2017">2017</option>
+                <option [ngValue]="2018">2018</option>
+                <option [ngValue]="2019">2019</option>
+                <option [ngValue]="2020">2020</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <label>Month</label>
+            <select formControlName="month" class="form-control">
+                <option value=""></option>
+                <option [ngValue]="0">January</option>
+                <option [ngValue]="1">February</option>
+                <option [ngValue]="2">March</option>
+                <option [ngValue]="3">April</option>
+                <option [ngValue]="4">May</option>
+                <option [ngValue]="5">June</option>
+                <option [ngValue]="6">July</option>
+                <option [ngValue]="7">August</option>
+                <option [ngValue]="8">September</option>
+                <option [ngValue]="9">October</option>
+                <option [ngValue]="10">November</option>
+                <option [ngValue]="11">December</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <label>Day</label>
+            <input
+                formControlName="day"
+                class="form-control"
+                min="1"
+                max="31"
+            />
+        </div>
+        <div class="col-sm-3">
+            <br />
+            <button class="btn btn-primary" (click)="checkHoliday()">
+                GO
+            </button>
+        </div>
+    </div>
+</form>
+<br />
+<h6>The date you entered is: {{ outputDate }}</h6>
+<h6 *ngIf="holiday">That day is {{ holiday }}!</h6>
+<h6>The NEXT holiday is in: {{ nextHoliday }}</h6>
