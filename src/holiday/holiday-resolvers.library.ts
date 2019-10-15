@@ -1,5 +1,5 @@
 import { IHolidayDefinition } from './holiday.library.definitions';
-import { DateParts } from '../date.library';
+import { DateParts } from '../relativity-date/date-parts.library';
 
 /**
  * @description used to find a specific day a specific amount of weeks into a month

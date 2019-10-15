@@ -1,4 +1,4 @@
-import { RelativityDate } from '../date.library';
+import { RelativityDate } from '../relativity-date/relativity-date.library';
 
 /**
  * @interface for work week definition

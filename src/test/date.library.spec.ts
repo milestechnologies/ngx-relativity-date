@@ -1,6 +1,7 @@
 import {} from 'jasmine';
-import { RelativityDate, DateParts } from '../date.library';
+import { RelativityDate } from '../relativity-date/relativity-date.library';
 import { isMoment } from 'moment';
+import { DateParts } from '../relativity-date/date-parts.library';
 
 function getFebruraryFirst2018StartingDate(): Date {
     return new Date(2018, 1, 1);

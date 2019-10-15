@@ -1,8 +1,9 @@
-import { DateParts, RelativityDate } from '../date.library';
+import { RelativityDate } from '../relativity-date/relativity-date.library';
 import {
     IHolidayDefinition,
     DaysOfTheWeek
 } from './holiday.library.definitions';
+import { DateParts } from '../relativity-date/date-parts.library';
 
 // isHoliday function returns a string of the holiday name
 // if the date object is a holiday and false if it does not

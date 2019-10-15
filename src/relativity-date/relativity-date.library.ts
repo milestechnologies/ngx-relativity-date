@@ -1,30 +1,17 @@
-import {
-    IDateModuleConfiguration,
-    defaultDateModuleConfig
-} from './default-configuration.library';
 import * as momentImported from 'moment';
-import { TimeChunk } from './time-chunk.library';
+
+import { IDateModuleConfiguration } from '../config/relativity-date-config.library';
+import { TimeChunk } from '../time-chunk/time-chunk.library';
 import {
     isHoliday,
     howLongUntilNextHoliday,
     getNextOccurenceOfDate
-} from './holiday/holiday.library';
-import { isDuringWorkHours } from './workweek/workweek.library';
+} from '../holiday/holiday.library';
+import { isDuringWorkHours } from '../workweek/workweek.library';
+import { momentDatePart, DateParts } from './date-parts.library';
+import { defaultConfig } from '../config/default.config';
+
 const moment = momentImported;
-
-export enum DateParts {
-    years,
-    quarters,
-    months,
-    weeks,
-    days,
-    hours,
-    minutes,
-    seconds,
-    milliseconds
-}
-
-type momentDatePart = 'y' | 'Q' | 'M' | 'w' | 'd' | 'h' | 'm' | 's' | 'ms';
 
 export interface IRelativityDate {
     date: Date;
@@ -64,7 +51,7 @@ export class RelativityDate implements IRelativityDate {
         if (customConfig) {
             this.config = customConfig;
         } else {
-            this.config = defaultDateModuleConfig;
+            this.config = defaultConfig;
         }
     }
 
@@ -144,9 +131,7 @@ export class RelativityDate implements IRelativityDate {
      */
     format(tokenString?: string): string {
         if (!tokenString) {
-            return moment(this.date).format(
-                defaultDateModuleConfig.defaultFormatString
-            );
+            return moment(this.date).format(this.config.defaultFormatString);
         }
         return moment(this.date).format(tokenString);
     }
