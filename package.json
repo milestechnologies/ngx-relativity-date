@@ -11,23 +11,23 @@
         "test": "ng test --karma-config karma.conf.js --browsers ChromeHeadlessNoSandbox --watch=false --code-coverage",
         "postversion": "git push --follow-tags"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/milestechnologies/ngx-relativity-date"
-    },
-    "author": {
-        "name": "milesdevservices",
-        "email": "devservices@milestechnologies.com"
-    },
-    "keywords": [
-        "angular"
-    ],
     "prettier": {
         "trailingComma": "none",
         "singleQuote": true,
         "tabWidth": 4,
         "arrowParens": "always"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/milestechnologies/ngx-relativity-date"
+    },
+    "author": {
+        "name": "milesdevservices",
+        "email": "oss@milestechnologies.com"
+    },
+    "keywords": [
+        "angular"
+    ],
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/milestechnologies/ngx-relativity-date/issues"

@@ -5,27 +5,39 @@
         "type": "git",
         "url": "https://github.com/milestechnologies/ngx-relativity-date"
     },
+    "description": "Easy to use Date helper functionality in Angular apps.",
+    "homepage": "https://github.com/milestechnologies",
     "author": {
         "name": "milesdevservices",
-        "email": "devservices@milestechnologies.com"
+        "email": "oss@milestechnologies.com"
     },
     "keywords": [
-        "angular"
+        "angular",
+        "typescript",
+        "ngx",
+        "dates"
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/milestechnologies/ngx-relativity-date/issues"
+        "url": "https://github.com/milestechnologies/ngx-relativity-date/issues",
+        "email": "oss@milestechnologies.com"
     },
     "ngPackage": {
         "lib": {
             "entryFile": "public_api.ts"
         },
-        "dest": "../dist"
+        "dest": "../dist",
+        "whitelistedNonPeerDependencies": [
+            "moment"
+        ]
     },
     "main": "ngx-relativity-date.umd.js",
     "module": "ngx-relativity-date.js",
     "jsnext:main": "ngx-relativity-date.js",
     "typings": "ngx-relativity-date.d.ts",
+    "dependencies": {
+        "moment": "^2.24.0"
+    },
     "peerDependencies": {
         "@angular/core": "^7.2.11",
         "@angular/common": "^7.2.11"
