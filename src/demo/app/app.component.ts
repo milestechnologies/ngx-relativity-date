@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
             <div class="container">
                 <div class="navbar-expand mr-auto navbar-nav">
                     <a class="navbar-brand" routerLink="/home"
-                        >ngx-date-module</a
+                        >ngx-relativity-date</a
                     >
                     <a
                         class="nav-link"

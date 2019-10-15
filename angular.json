@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "ngx-date-module": {
+        "ngx-relativity-date": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -45,21 +45,21 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "ngx-date-module:build"
+                        "browserTarget": "ngx-relativity-date:build"
                     },
                     "configurations": {
                         "prod": {
-                            "browserTarget": "ngx-date-module:build:prod"
+                            "browserTarget": "ngx-relativity-date:build:prod"
                         },
                         "production": {
-                            "browserTarget": "ngx-date-module:build:production"
+                            "browserTarget": "ngx-relativity-date:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "ngx-date-module:build"
+                        "browserTarget": "ngx-relativity-date:build"
                     }
                 },
                 "test": {
@@ -91,7 +91,7 @@
                 }
             }
         },
-        "ngx-date-module-e2e": {
+        "ngx-relativity-date-e2e": {
             "root": "e2e",
             "sourceRoot": "e2e",
             "projectType": "application",
@@ -100,7 +100,7 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "./protractor.conf.js",
-                        "devServerTarget": "ngx-date-module:serve"
+                        "devServerTarget": "ngx-relativity-date:serve"
                     }
                 },
                 "lint": {
@@ -113,7 +113,7 @@
             }
         }
     },
-    "defaultProject": "ngx-date-module",
+    "defaultProject": "ngx-relativity-date",
     "schematics": {
         "@schematics/angular:component": {
             "styleext": "css"

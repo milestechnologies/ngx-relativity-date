@@ -43,7 +43,7 @@ Thank you to the [contributors](https://github.com/milestechnologies/ngx-relativ
 
 ## License
 
-This project is licensed under the MIT License - see the  [LICENSE.md](https://github.com/ivarcode/ngx-date-module/blob/develop/LICENSE)  file for details.
+This project is licensed under the MIT License - see the  [LICENSE.md](https://github.com/ivarcode/ngx-relativity-date/blob/develop/LICENSE)  file for details.
 ## Commands
 
 `npm start` Run the demo environment

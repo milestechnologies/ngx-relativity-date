@@ -1,9 +1,9 @@
 {
-    "name": "ngx-date-module",
+    "name": "ngx-relativity-date",
     "version": "0.0.1",
     "repository": {
         "type": "git",
-        "url": "https://github.com/milestechnologies/ngx-date-module"
+        "url": "https://github.com/milestechnologies/ngx-relativity-date"
     },
     "author": {
         "name": "milesdevservices",
@@ -14,7 +14,7 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/milestechnologies/ngx-date-module/issues"
+        "url": "https://github.com/milestechnologies/ngx-relativity-date/issues"
     },
     "ngPackage": {
         "lib": {
@@ -22,10 +22,10 @@
         },
         "dest": "../dist"
     },
-    "main": "ngx-date-module.umd.js",
-    "module": "ngx-date-module.js",
-    "jsnext:main": "ngx-date-module.js",
-    "typings": "ngx-date-module.d.ts",
+    "main": "ngx-relativity-date.umd.js",
+    "module": "ngx-relativity-date.js",
+    "jsnext:main": "ngx-relativity-date.js",
+    "typings": "ngx-relativity-date.d.ts",
     "peerDependencies": {
         "@angular/core": "^7.2.11",
         "@angular/common": "^7.2.11"

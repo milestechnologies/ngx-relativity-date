@@ -1,17 +1,19 @@
 {
-    "name": "ngx-date-module",
+    "name": "ngx-relativity-date",
     "version": "0.0.1",
     "private": true,
     "scripts": {
         "start": "npm run build && ng serve",
-        "build": "ng-packagr -p src/package.json",
-        "lint": "tslint --project tsconfig.json",
+        "copy-to-dist": "cp README.md dist",
+        "build": "ng-packagr -p src/package.json && npm run copy-to-dist",
+        "build-demo-site": "npm run build && ng build --prod --base-href \"https://milestechnologies.github.io/ngx-keyboard-shortcuts/\" && rm -rf docs && cp -R demo-dist docs",
+        "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
         "test": "ng test --karma-config karma.conf.js --browsers ChromeHeadlessNoSandbox --watch=false --code-coverage",
         "postversion": "git push --follow-tags"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/milestechnologies/ngx-date-module"
+        "url": "https://github.com/milestechnologies/ngx-relativity-date"
     },
     "author": {
         "name": "milesdevservices",
@@ -28,7 +30,7 @@
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/milestechnologies/ngx-date-module/issues"
+        "url": "https://github.com/milestechnologies/ngx-relativity-date/issues"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.13.0",
