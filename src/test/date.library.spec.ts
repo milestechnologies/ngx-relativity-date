@@ -1,7 +1,9 @@
 import {} from 'jasmine';
 import { RelativityDate } from '../relativity-date/relativity-date.library';
-import { isMoment } from 'moment';
+import { isMoment, relativeTimeRounding } from 'moment';
 import { DateParts } from '../relativity-date/date-parts.library';
+import { IDateModuleConfiguration } from '../config/relativity-date-config.library';
+import { HolidayDefinitions } from '../holiday/default-holidays.library';
 
 function getFebruraryFirst2018StartingDate(): Date {
     return new Date(2018, 1, 1);
@@ -33,6 +35,56 @@ describe('date.libary', () => {
     const nineMillisecondsLess = new Date(2018, 9, 24, 23, 59, 59, 991);
     let relativityDate: RelativityDate;
     // =================================
+
+    describe('constructor', () => {
+        it('takes a custom configuration file', () => {
+            const theDate = new Date(2020, 2, 12);
+            const config: IDateModuleConfiguration = {
+                defaultFormatString: 'dddd, MMMM, Do, YYYY, h:mm:ss a',
+                workWeek: {
+                    sunday: { start: null, end: null },
+                    monday: { start: 10, end: 18 },
+                    tuesday: { start: 9, end: 17 },
+                    wednesday: { start: 9, end: 17 },
+                    thursday: { start: 9, end: 17 },
+                    friday: { start: 9, end: 17 },
+                    saturday: { start: null, end: null }
+                },
+                holidays: [
+                    HolidayDefinitions.christmas,
+                ]
+            };
+
+            relativityDate = new RelativityDate(theDate, false, config);
+
+            expect(relativityDate.config).toBe(config);
+        });
+    });
+
+    describe('get config', () => {
+        it('returns the current config', () => {
+            const theDate = new Date(2020, 2, 12);
+            const config: IDateModuleConfiguration = {
+                defaultFormatString: 'dddd, MMMM, Do, YYYY, h:mm:ss a',
+                workWeek: {
+                    sunday: { start: null, end: null },
+                    monday: { start: 10, end: 18 },
+                    tuesday: { start: 9, end: 17 },
+                    wednesday: { start: 9, end: 17 },
+                    thursday: { start: 9, end: 17 },
+                    friday: { start: 9, end: 17 },
+                    saturday: { start: null, end: null }
+                },
+                holidays: [
+                    HolidayDefinitions.christmas,
+                ]
+            };
+
+            relativityDate = new RelativityDate(theDate, false, config);
+            
+            expect(relativityDate.getConfig()).toBe(config);
+        });
+    });
 
     describe('add time', () => {
         describe('without asReference', () => {
