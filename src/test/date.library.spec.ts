@@ -43,15 +43,6 @@ describe('date.libary', () => {
             const theDate = new Date(2020, 2, 12);
             const config: IDateModuleConfiguration = {
                 defaultFormatString: 'dddd, MMMM, Do, YYYY, h:mm:ss a',
-                workWeek: {
-                    sunday: { start: null, end: null },
-                    monday: { start: 10, end: 18 },
-                    tuesday: { start: 9, end: 17 },
-                    wednesday: { start: 9, end: 17 },
-                    thursday: { start: 9, end: 17 },
-                    friday: { start: 9, end: 17 },
-                    saturday: { start: null, end: null }
-                },
                 holidays: [
                     HolidayDefinitions.christmas,
                 ]
@@ -68,15 +59,6 @@ describe('date.libary', () => {
             const theDate = new Date(2020, 2, 12);
             const config: IDateModuleConfiguration = {
                 defaultFormatString: 'dddd, MMMM, Do, YYYY, h:mm:ss a',
-                workWeek: {
-                    sunday: { start: null, end: null },
-                    monday: { start: 10, end: 18 },
-                    tuesday: { start: 9, end: 17 },
-                    wednesday: { start: 9, end: 17 },
-                    thursday: { start: 9, end: 17 },
-                    friday: { start: 9, end: 17 },
-                    saturday: { start: null, end: null }
-                },
                 holidays: [
                     HolidayDefinitions.christmas,
                 ]
