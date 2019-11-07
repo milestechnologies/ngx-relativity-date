@@ -28,11 +28,11 @@ export class TestComponent implements OnInit {
         console.log(secondDate);
         console.log(secondDate.relativityDate.isHoliday());
         // "Sunday, February 14th 2010, 3:25:50 pm" is the moment format of the date
-        this.someText =
-            date.relativityDate
-                .toMoment()
-                .format('dddd, MMMM Do YYYY, h:mm:ss a') +
-            ' :: ' +
-            date.relativityDate.isDuringWorkHours();
+        // this.someText =
+        //     date.relativityDate
+        //         .toMoment()
+        //         .format('dddd, MMMM Do YYYY, h:mm:ss a') +
+        //     ' :: ' +
+        //     date.relativityDate.isDuringWorkHours();
     }
 }
