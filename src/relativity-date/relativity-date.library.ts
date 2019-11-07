@@ -1,13 +1,11 @@
 import * as momentImported from 'moment';
 
 import { IDateModuleConfiguration } from '../config/relativity-date-config.library';
-import { TimeChunk } from '../time-chunk/time-chunk.library';
 import {
     isHoliday,
     howLongUntilNextHoliday,
     getNextOccurenceOfDate
 } from '../holiday/holiday.library';
-import { isDuringWorkHours } from '../workweek/workweek.library';
 import { momentDatePart, DateParts } from './date-parts.library';
 import { defaultConfig } from '../config/default.config';
 
@@ -185,15 +183,6 @@ export class RelativityDate implements IRelativityDate {
     }
 
     /**
-     * @description referencing function in workweek library
-     * @returns boolean, whether this date is within the work hours defined
-     * by the config
-     */
-    isDuringWorkHours(): boolean {
-        return isDuringWorkHours.bind(this)();
-    }
-
-    /**
      * @description referencing function in holiday library
      * @returns Description of Holiday if date matches a holiday or false if date does not match holiday
      */
@@ -217,66 +206,5 @@ export class RelativityDate implements IRelativityDate {
      */
     getNextOccurenceOfDate(month: number, day: number): Date {
         return getNextOccurenceOfDate.bind(this)(month, day);
-    }
-
-    /**
-     * @description designed to one-line adding/subtracting multiple date parts / value
-     * to a date obj
-     * @param data passed in TimeChunk
-     * @returns result of adding time chunk to date
-     */
-    addFullDate(data: TimeChunk): RelativityDate {
-        if (data.year !== null && data.year !== 0) {
-            this.add(data.year, DateParts.years);
-        }
-        if (data.month !== null && data.month !== 0) {
-            this.add(data.month, DateParts.months);
-        }
-        if (data.day !== null && data.day !== 0) {
-            this.add(data.day, DateParts.days);
-        }
-        if (data.hour !== null && data.hour !== 0) {
-            this.add(data.hour, DateParts.hours);
-        }
-        if (data.minute !== null && data.minute !== 0) {
-            this.add(data.minute, DateParts.minutes);
-        }
-        if (data.second !== null && data.second !== 0) {
-            this.add(data.second, DateParts.seconds);
-        }
-        if (data.millisecond !== null && data.millisecond !== 0) {
-            this.add(data.millisecond, DateParts.milliseconds);
-        }
-        return this;
-    }
-    /**
-     * @description designed to one-line adding/subtracting multiple date parts / value
-     * to a date obj
-     * @param data passed in TimeChunk
-     * @returns result of subtracting TimeChunk from date
-     */
-    subtractFullDate(data: TimeChunk): RelativityDate {
-        if (data.year !== null && data.year !== 0) {
-            this.subtract(data.year, DateParts.years);
-        }
-        if (data.month !== null && data.month !== 0) {
-            this.subtract(data.month, DateParts.months);
-        }
-        if (data.day !== null && data.day !== 0) {
-            this.subtract(data.day, DateParts.days);
-        }
-        if (data.hour !== null && data.hour !== 0) {
-            this.subtract(data.hour, DateParts.hours);
-        }
-        if (data.minute !== null && data.minute !== 0) {
-            this.subtract(data.minute, DateParts.minutes);
-        }
-        if (data.second !== null && data.second !== 0) {
-            this.subtract(data.second, DateParts.seconds);
-        }
-        if (data.millisecond !== null && data.millisecond !== 0) {
-            this.subtract(data.millisecond, DateParts.milliseconds);
-        }
-        return this;
     }
 }
