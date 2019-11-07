@@ -23,7 +23,7 @@ describe('date.libary', () => {
     const tenSecondsMore = new Date(2018, 1, 1, 0, 0, 10);
     const nineMillisecondsMore = new Date(2018, 1, 1, 0, 0, 0, 9);
     const fourQuartersMore = new Date(2019, 1, 1);
-    const twoWeeksmore = new Date(2018, 1, 15);
+    const twoWeeksMore = new Date(2018, 1, 15);
     const yaDefault = new Date(2018, 1, 1);
     const octoberTwentyFith2018 = getOctoberTwentyFifth2018StartingDate();
     const twoYearsLess = new Date(2016, 9, 25);
@@ -120,7 +120,7 @@ describe('date.libary', () => {
 
             it('should add weeks but not change startingDate', () => {
                 const value = relativityDate.add(2, DateParts.weeks).date;
-                expect(value.getTime()).toBe(twoWeeksmore.getTime());
+                expect(value.getTime()).toBe(twoWeeksMore.getTime());
                 expect(startingDate.getTime()).toBe(
                     februaryFirst2018.getTime()
                 );
