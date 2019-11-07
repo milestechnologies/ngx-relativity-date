@@ -12,10 +12,7 @@
         "rootDir": ".",
         "lib": ["es2015", "dom"],
         "skipLibCheck": true,
-        "types": [],
-        "paths": {
-            "moment": ["../node_modules/moment/min/moment.min.js"]
-        }
+        "types": []
     },
     "angularCompilerOptions": {
         "annotateForClosureCompiler": true,
