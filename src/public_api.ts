@@ -1,6 +1,5 @@
 export * from './relativity-date/relativity-date.library';
 export * from './index';
 export * from './config/relativity-date-config.library';
-export * from './time-chunk/time-chunk.library';
 export * from './holiday/holiday-resolvers.library';
 export * from './holiday/holiday.library.definitions';
