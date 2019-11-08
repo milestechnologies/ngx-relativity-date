@@ -17,8 +17,8 @@ export class APIComponent {
         let now = new Date();
 
         // Format Date. Do we want to do a whole thing on formatting, or just reference moment?
-        let date = now.relativityDate.format('LL');
-        this.apiEndPoints.push({code: "now.relativityDate.format('LL');", result: date});
+        let formattedDate = now.relativityDate.format('LL');
+        this.apiEndPoints.push({code: "now.relativityDate.format('LL');", result: formattedDate});
         // Add Day
         now.relativityDate.add(10, DateParts.days);
         this.apiEndPoints.push({code: 'now.relativityDate.add(10, DateParts.days);',  result: now.toString()});
@@ -31,5 +31,7 @@ export class APIComponent {
         // Is During Work Hours
         let isDuringWorkHrs = now.relativityDate.isDuringWorkHours();
         this.apiEndPoints.push({code: 'let isDuringWorkHrs = now.relativityDate.isDuringWorkHours();', result: isDuringWorkHrs.toString()});
+    
+        
     }
 }

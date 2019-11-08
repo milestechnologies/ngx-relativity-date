@@ -4,7 +4,7 @@
         <div class="container">
             <p>
                 <em>All API points in the examples below will make use of the variable, "now".</em>
-                <br/>
+                <br />
                 <code style="color: black;"> now = new Date(); </code>
             </p>
         </div>
@@ -25,20 +25,19 @@
         </div>
         <ul class="list-group">
             <div *ngFor="let endPoint of apiEndPoints">
-                <div class="row">
+                <div class="row no-gutters">
                     <div class="col-md-6">
                         <li class="list-group-item">
-                            <br/>
+                            <br />
                             <code style="color: black;">
                                     {{ endPoint.code }}
                                 </code>
-  
-                        </li>                          
-                        <br/>
+                        </li>
+                        <br />
                     </div>
                     <div class="col-md-6">
                         <li class="list-group-item">
-                             <br/>
+                            <br />
                             {{ endPoint.result }}
                         </li>
                     </div>
@@ -46,8 +45,8 @@
             </div>
         </ul>
         <br />
-        <br/>
-        <br/>
+        <br />
+        <br />
 
     </div>
 </body>

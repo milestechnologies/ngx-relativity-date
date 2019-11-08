@@ -1,14 +1,136 @@
-<h4>How it works</h4>
-<div class="jumbotron demo-description-block">
+<body>
+    <h4>ngx-relativity-date</h4>
+    <div class="jumbotron demo-description-block">
+        <h6>Remarks</h6>
+        <p>
+            ngx-relativity-date is a package designed to efficiently handle date and time in angular.
+            Built on Moment.js, this package provides a framework for a customizable figuration which provides
+            flexibilty convenience.
+        </p>
+        <br />
+        <h6>Getting Started</h6>
+        <p>
+            If you are intending to use this repository you should be familiar with <code>angular</code>,
+            and will need to install angular on your machine. The command needed to install angular is:
+            <code>npm install -g @angular/cli</code>
+        </p>
+        <br />
+        <h6>Installation</h6>
+        <p>
+            To install our package you would use the node package manager. The command would be
+            npm install <code>ngx-relativity-date</code> Then using the command <code>npm start</code> You will be able
+            to deploy this service in <b>localhost:4200</b> to see what you can do with the application.
+        </p>
+    </div>
+    <h5>relativityDate Property</h5>
     <p>
-        NPM moment allows you to access a lot of useful data, for example,
-        retrieving the date! Pressing the button below will utilize the moment()
-        function to retrieve the current date. Try it for yourself!
-        <br />
-        <br />
-        Please note: All that is required to change the format of the date is a
-        small modification to order highlighted in the gold code down below!
+        Once ngx-relativity-date is installed, relativityDate can be accessed as a property of Date(). (See API Documentation.)
     </p>
-</div>
+    <br />
+    <h5>Formatting</h5>
+    <p>
+        To obtain a formatted string representation of relativityDate, use the format method with a token parameter. See
+        the example tokens below.
+        <br/>
+        <b>Syntax</b>
+        <code>Date.relativityDate.Format(tokenString);</code>
+    </p>
+    <br />
+    <div class="col-md-8">
+        <ul class="list-group">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <li class="list-group">
+                        Time
+                    </li>
+                </div>
+                <div class="col-md-6">
+                    <li class="list-group-flush">
+                        <code>'LT' // 10:30 AM</code>
+                    </li>
+                    <li class="list-group-flush">
+                        <code>'LTS' // 10:30:02 AM</code>
+                    </li>
+                </div>
+            </div>
+        </ul>
+        <br />
+        <ul class="list-group">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <li class="list-group">
+                        Month, Day, Year
+                    </li>
+                </div>
+                <div class="col-md-6">
+                    <li class="list-group-flush">
+                        <code>'L' // 1/1/2020</code>
+                    </li>
+                    <li class="list-group-flush">
+                        <code>'l' // 01/01/2020</code>
+                    </li>
+                    <li class="list-group-flush">
+                        <code>'LL' // January 1, 2020</code>
+                    </li>
+                    <li class="list-group-flush">
+                        <code>'ll' // Jan 1, 2020</code>
+                    </li>
+                </div>
+            </div>
+        </ul>
+        <br />
+        <ul class="list-group">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <li class="list-group">
+                        Month, Day, Year, time
+                    </li>
+                </div>
+                <div class="col-md-6">
+                    <li class="list-group-flush">
+                        <code>'LLL' // January 1, 2020 10:30 AM</code>
+                    </li>
+                    <li class="list-group-flush">
+                        <code>'lll' // Jan 1, 2020 10:30 AM</code>
+                    </li>
+                </div>
+            </div>
+        </ul>
+        <br />
+        <ul class="list-group">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <li class="list-group">
+                        Month, Day, Week, Year, time
+                    </li>
+                </div>
+                <div class="col-md-6">
+                    <li class="list-group-flush">
+                        <code>'LLLL' // Friday, January 1, 2020 10:30 AM</code>
+                    </li>
+                    <li class="list-group-flush">
+                        <code>'llll' // Fri, Jan 1, 2020 10:30 AM</code>
+                    </li>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <br />
+    <p>The token parameter for relativityDate is compatible with all formatting of Moment.js.
+        For more examples on date formattng please see the Moment.js documentation
+        <a href="https://momentjs.com/docs/#/displaying/format/">here</a>.
+    </p>
+    <br />
+    <h5>Time Manipulation</h5>
+    <p>
+        Through the relativityDate property the value of the date object can be altered using the <code>add()</code> and
+        <code>subtract()</code> methods.
+        Both methods take an input of an integer, and a DatePart value.
+        <br/>
+        <b>Syntax:</b>
+        <code>Date.relativityDate.add(integer, DatePart);</code> and
+        <code>Date.relativityDate.subtract(integer, DatePart);</code>
+    </p>
+    <br />
 
-
+</body> <br /><br /><br />
