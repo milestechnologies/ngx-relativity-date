@@ -17,11 +17,8 @@ const myCustomConfiguration: IDateModuleConfiguration = {}; // TODO
 import { SimpleDateRetrievalComponent } from './components/simple-date-retrieval.component';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import { AddSubtractDateComponent } from './components/add-subtract-date-demo/add-subtract-date.component';
-import { TimeDescriptionComponent } from './components/time-description-demo/time-description.component';
-import { ToFromComponent } from './components/to-from-demo/to-from.component';
-import { FormatSwitchComponent } from './components/format-switch-demo/format-switch-demo.component';
-import { HolidayDemoComponent } from './components/holiday-demo/holiday-demo.component';
+import { AboutComponent } from './components/About/about.component';
+import { APIComponent } from './components/api/api.component';
 
 export function hljsLanguages(): any {
     return [
@@ -36,11 +33,8 @@ export function hljsLanguages(): any {
         AppComponent,
         TestComponent,
         SimpleDateRetrievalComponent,
-        AddSubtractDateComponent,
-        TimeDescriptionComponent,
-        ToFromComponent,
-        FormatSwitchComponent,
-        HolidayDemoComponent
+        AboutComponent,
+        APIComponent
     ],
     imports: [
         BrowserModule,
