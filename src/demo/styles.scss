@@ -3,6 +3,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome/css/font-awesome.css';
 
+
+.jumbotron.jumbotron-fluid{
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
 .jumbotron.demo-description-block {
     padding-top: 25px;
     padding-bottom: 10px;
@@ -21,3 +26,18 @@
 .highcodeblock .hljs-keyword {
     color: #a81c1c;
 }
+code {
+    background-color: rgba(27, 31, 35, 0.05);
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-size: 14px;
+}
+
+.code-in-text{
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+// body{
+//     background-color: blue;
+// }

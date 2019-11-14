@@ -15,7 +15,7 @@ declare global {
          * with that Date object as its context.
          * TODO CCC: add better intellisense for this object and figure out how to share the jsDocs so don't have to rewrite them all the time
          */
-        relativityDate: RelativityDate;
+        RelativityDate: RelativityDate;
     }
 }
 

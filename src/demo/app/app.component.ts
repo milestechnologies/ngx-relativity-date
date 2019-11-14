@@ -11,39 +11,15 @@ import { Component } from '@angular/core';
                     >
                     <a
                         class="nav-link"
-                        routerLink="/getdate"
+                        routerLink="/about"
                         routerLinkActive="active"
-                        >Date Retrieval</a
+                        >About</a
                     >
                     <a
                         class="nav-link"
-                        routerLink="/addsubdemo"
+                        routerLink="/api"
                         routerLinkActive="active"
-                        >Add/Subtract to Date and Time</a
-                    >
-                    <a
-                        class="nav-link"
-                        routerLink="/timedesc"
-                        routerLinkActive="active"
-                        >Descriptions</a
-                    >
-                    <a
-                        class="nav-link"
-                        routerLink="/tofrom"
-                        routerLinkActive="active"
-                        >To-From Demo</a
-                    >
-                    <a
-                        class="nav-link"
-                        routerLink="/formatswitch"
-                        routerLinkActive="active"
-                        >Format</a
-                    >
-                    <a
-                        class="nav-link"
-                        routerLink="/holiday"
-                        routerLinkActive="active"
-                        >Holiday</a
+                        >API</a
                     >
                     <button
                         class="navbar-toggler"

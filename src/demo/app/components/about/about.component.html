@@ -1,0 +1,225 @@
+<body>
+    <h2>ngx-relativity-date</h2>
+    <br />
+    <h5>Remarks</h5>
+    <hr>
+    <p>
+        <b>ngx-relativity-date</b> is a package designed to efficiently handle date and time in angular.
+        Built on Moment.js, this package provides a framework for a customizable configuration which provides developers
+        flexibilty and convenience. <b>ngx-relativity-date</b> enhances features of Moment.js through object compatibility, 
+        allowing the developer to chain nultiple relativityDate functions. Conversion capabilities provide simplicity when
+        accessing features of Moment.js and <b>ngx-relativity-date</b> jointly.
+    </p>
+    <br />
+    <h5>Getting Started</h5>
+    <hr>
+    <p>
+        If you are intending to use this repository you should be familiar with <code>angular</code>,
+        and will need to install angular on your machine. The command needed to install angular is:
+        <code>npm install -g @angular/cli</code>
+    </p>
+    <br />
+    <h5>Installation</h5>
+    <hr>
+    <p>
+        Use the node package manager to install <b>ngx-relativity-date</b>. Type the command
+        <code>npm install ngx-relativity-date</code>. After the installation completes, enter the command
+        <code>npm start</code>
+        to begin using <b>ngx-relativity-date</b> in your application.
+    </p>
+    <br />
+    <h5>Accessing the <code>relativityDate</code> Property</h5>
+    <hr>
+    <p>
+        Once <b>ngx-relativity-date</b> is installed, relativityDate can be accessed as a property of <code>Date</code>.
+        (See API
+        Documentation.)
+        *** Insert gif here? ***
+    </p>
+    <br />
+    <h5>Formatting</h5>
+    <hr>
+    <p>
+        To obtain a formatted string representation of relativityDate, use the format method with a token parameter. See
+        the example tokens below.
+        <br />
+        <b>Syntax:</b>
+        <code>Date.relativityDate.format(tokenString);</code>
+    </p>
+    <br />
+    <div class="jumbotron demo-description-block">
+
+        <div class="col-md-12">
+            <ul class="list-group">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <li class="list-group">
+                            Time
+                        </li>
+                    </div>
+                    <div class="col-md-7">
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('LT'); // 10:30 AM</div>
+                        </li>
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('LTS'); // 10:30:02 AM</div>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+            <br />
+            <ul class="list-group">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <li class="list-group">
+                            Month, Day, Year
+                        </li>
+                    </div>
+                    <div class="col-md-7">
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('L'); // 1/1/2020</div>
+                        </li>
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('l'); // 01/01/2020</div>
+                        </li>
+                        <br />
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('LL'); // January 1, 2020</div>
+                        </li>
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('ll'); // Jan 1, 2020</div>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+            <br />
+            <ul class="list-group">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <li class="list-group">
+                           Month, Day, Year, time
+                        </li>
+                    </div>
+                    <div class="col-md-7">
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('LLL'); // January 1, 2020 10:30 AM</div>
+                        </li>
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('lll'); // Jan 1, 2020 10:30 AM</div>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+            <br />
+            <ul class="list-group">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <li class="list-group">
+                            Month, Day, Week, Year, time
+                        </li>
+                    </div>
+                    <div class="col-md-7">
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('LLLL'); // Friday, January 1, 2020 10:30 AM</div>
+                        </li>
+                        <li class="list-group-flush">
+                            <div class="code-in-text">now.relativityDate.format('llll'); // Fri, Jan 1, 2020 10:30 AM</div>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <p>The token parameter for relativityDate is compatible with all formatting of Moment.js.
+        For more examples please see the Moment.js documentation
+        <a href="https://momentjs.com/docs/#/displaying/format/">here</a>.
+    </p>
+    <br />
+    <h5>Time Manipulation</h5>
+    <hr>
+    <p>
+        Using the relativityDate, property the value of the date object can be altered using the <code>add()</code> and
+        <code>subtract()</code> methods.
+        Both methods take an input of an integer, and a DatePart value.
+        <br />
+        <b>Syntax:</b>
+        <code>Date.relativityDate.add(integer, DatePart);</code> and
+        <code>Date.relativityDate.subtract(integer, DatePart);</code>
+    </p>
+    <br />
+    <h5>Holidays</h5>
+    <hr>
+    <p>
+        Holidays can customized in the <code>default.config.ts</code> file. The Default holidays in the
+        <b>ngx-relativity-date</b> package are:
+    </p>
+    <ul>
+        <li>
+            Christmas
+        </li>
+        <li>
+            Labor Day
+        </li>
+        <li>
+            New Year's Day
+        </li>
+        <li>
+            Martin Luther King Jr. Day
+        </li>
+        <li>
+            Washington's Birthday
+        </li>
+        <li>
+            Independence Day
+        </li>
+        <li>
+            Columbus Day
+        </li>
+        <li>
+            Veteran's Day
+        </li>
+        <li>
+            Thanksgiving Day
+        </li>
+        <li>
+            Memorial Day
+        </li>
+    </ul>
+
+    <br />
+    <h5>Date Evaluation Methods</h5>
+    <hr>
+    <p>
+        Dates can be evaluated using the various Date Manipulation Methods included in the <b>ngx-relativity-date</b>
+        package.
+    </p>
+    <ul>
+
+        <li>
+            <code>isHoliday()</code>
+        </li>
+        <li>
+            <code>isBeforeDate()</code>
+        </li>
+        <li>
+            <code>isAfterDate()</code>
+        </li>
+    </ul>
+    <br />
+    <h5>Other Date Methods</h5>
+    <hr>
+    <ul>
+        <li>
+            <code>getInstanceOfDay()</code>
+        </li>
+        <li>
+            <code>applyObservanceRules()</code>
+        </li>
+        <li>
+            <code>howLongUntilNextHoliday()</code>
+        </li>
+        <li>
+            <code>toMoment()</code>
+        </li>
+    </ul>
+</body> <br /><br /><br />

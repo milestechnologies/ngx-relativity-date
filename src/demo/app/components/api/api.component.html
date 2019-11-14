@@ -1,0 +1,48 @@
+<body>
+    <h2>API</h2>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h6>Remarks</h6>
+            <p>
+                All API points in the examples below will make use of the variable, "now".
+                <br />
+                <code> now = new Date(); </code>
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col-md-6">
+                <h6>
+                    Code
+                </h6>
+            </div>
+            <div class="col-md-6">
+                <h6>
+                    Result
+                </h6>
+            </div>
+        </div>
+        <ul class="list-group">
+            <div *ngFor="let endPoint of apiEndPoints">
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <li class="list-group-item">
+                            <code>{{ endPoint.code }}</code>
+                        </li>
+                    </div>
+                    <div class="col-md-6">
+                        <li class="list-group-item">
+                            {{ endPoint.result }}
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </ul>
+        <br />
+        <br />
+        <br />
+
+    </div>
+</body>
