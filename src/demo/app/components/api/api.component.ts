@@ -58,8 +58,8 @@ export class APIComponent {
         // Is During Work Hours
         let isDuringWorkHrs = now.relativityDate.isDuringWorkHours();
         this.apiEndPoints.push({code: 'now.relativityDate.isDuringWorkHours();', result: isDuringWorkHrs.toString()});
-        // // Is Holiday Dis also no work :(
-        // let isHoliday = now.RelativityDate.isHoliday();
-        // this.apiEndPoints.push({code: 'let isHoliday = now.RelativityDate.isHoliday();', result: isHoliday.toString()});
+        // Is Holiday
+        let isHoliday = now.relativityDate.isHoliday();
+        this.apiEndPoints.push({code: 'let isHoliday = now.RelativityDate.isHoliday();', result: isHoliday.toString()});
     }
 }

@@ -26,7 +26,18 @@
 .highcodeblock .hljs-keyword {
     color: #a81c1c;
 }
-
-code{
-    color: royalblue;
+code {
+    background-color: rgba(27, 31, 35, 0.05);
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-size: 14px;
 }
+
+.code-in-text{
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+// body{
+//     background-color: blue;
+// }

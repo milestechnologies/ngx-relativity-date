@@ -6,7 +6,9 @@
     <p>
         <b>ngx-relativity-date</b> is a package designed to efficiently handle date and time in angular.
         Built on Moment.js, this package provides a framework for a customizable configuration which provides developers
-        flexibilty and convenience. 
+        flexibilty and convenience. <b>ngx-relativity-date</b> enhances features of Moment.js through object compatibility, 
+        allowing the developer to chain nultiple relativityDate functions. Conversion capabilities provide simplicity when
+        accessing features of Moment.js and <b>ngx-relativity-date</b> jointly.
     </p>
     <br />
     <h5>Getting Started</h5>
@@ -26,7 +28,7 @@
         to begin using <b>ngx-relativity-date</b> in your application.
     </p>
     <br />
-    <h5>Accessing the <code>relativityDate </code>Property</h5>
+    <h5>Accessing the <code>relativityDate</code> Property</h5>
     <hr>
     <p>
         Once <b>ngx-relativity-date</b> is installed, relativityDate can be accessed as a property of <code>Date</code>.
@@ -42,7 +44,7 @@
         the example tokens below.
         <br />
         <b>Syntax:</b>
-        <code>Date.relativityDate.Format(tokenString);</code>
+        <code>Date.relativityDate.format(tokenString);</code>
     </p>
     <br />
     <div class="jumbotron demo-description-block">
@@ -57,10 +59,10 @@
                     </div>
                     <div class="col-md-7">
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('LT'); // 10:30 AM</code>
+                            <div class="code-in-text">now.relativityDate.format('LT'); // 10:30 AM</div>
                         </li>
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('LTS'); // 10:30:02 AM</code>
+                            <div class="code-in-text">now.relativityDate.format('LTS'); // 10:30:02 AM</div>
                         </li>
                     </div>
                 </div>
@@ -75,17 +77,17 @@
                     </div>
                     <div class="col-md-7">
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('L'); // 1/1/2020</code>
+                            <div class="code-in-text">now.relativityDate.format('L'); // 1/1/2020</div>
                         </li>
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('l'); // 01/01/2020</code>
+                            <div class="code-in-text">now.relativityDate.format('l'); // 01/01/2020</div>
                         </li>
                         <br />
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('LL'); // January 1, 2020</code>
+                            <div class="code-in-text">now.relativityDate.format('LL'); // January 1, 2020</div>
                         </li>
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('ll'); // Jan 1, 2020</code>
+                            <div class="code-in-text">now.relativityDate.format('ll'); // Jan 1, 2020</div>
                         </li>
                     </div>
                 </div>
@@ -95,15 +97,15 @@
                 <div class="row no-gutters">
                     <div class="col-md-5">
                         <li class="list-group">
-                            Month, Day, Year, time
+                           Month, Day, Year, time
                         </li>
                     </div>
                     <div class="col-md-7">
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('LLL'); // January 1, 2020 10:30 AM</code>
+                            <div class="code-in-text">now.relativityDate.format('LLL'); // January 1, 2020 10:30 AM</div>
                         </li>
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('lll'); // Jan 1, 2020 10:30 AM</code>
+                            <div class="code-in-text">now.relativityDate.format('lll'); // Jan 1, 2020 10:30 AM</div>
                         </li>
                     </div>
                 </div>
@@ -118,10 +120,10 @@
                     </div>
                     <div class="col-md-7">
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('LLLL'); // Friday, January 1, 2020 10:30 AM</code>
+                            <div class="code-in-text">now.relativityDate.format('LLLL'); // Friday, January 1, 2020 10:30 AM</div>
                         </li>
                         <li class="list-group-flush">
-                            <code>now.relativityDate.format('llll'); // Fri, Jan 1, 2020 10:30 AM</code>
+                            <div class="code-in-text">now.relativityDate.format('llll'); // Fri, Jan 1, 2020 10:30 AM</div>
                         </li>
                     </div>
                 </div>
@@ -217,10 +219,7 @@
             <code>howLongUntilNextHoliday()</code>
         </li>
         <li>
-            <code>getNextOccuranceOfDate()</code> Are we still keeping this one?
+            <code>toMoment()</code>
         </li>
-
     </ul>
-
-    ***Not sure how far we want to go into describing these, or what methods will be ditched**
 </body> <br /><br /><br />
