@@ -25,11 +25,11 @@ declare global {
 export class NgxRelativityDateModule {
     static forRoot(
         customConfiguration?: IDateModuleConfiguration
-    ): ModuleWithProviders {
+    ): ModuleWithProviders<NgxRelativityDateModule> {
         // here we are modifying the Date prototype to define the relativityDate property as
         // a getter that returns a new RelativityDate class instance using customConfiguration
         Object.defineProperty(Date.prototype, 'relativityDate', {
-            get: function(): RelativityDate {
+            get: function (): RelativityDate {
                 return new RelativityDate(this, true, customConfiguration);
             }
         });

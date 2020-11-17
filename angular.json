@@ -18,8 +18,7 @@
                         "polyfills": "src/demo/polyfills.ts",
                         "assets": ["src/demo/assets"],
                         "styles": ["src/demo/styles.scss"],
-                        "scripts": [],
-                        "es5BrowserSupport": true
+                        "scripts": []
                     },
                     "configurations": {
                         "production": {
@@ -32,7 +31,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": false,
                             "extractLicenses": true,
@@ -125,5 +123,8 @@
             "styleext": "css"
         },
         "@schematics/angular:directive": {}
+    },
+    "cli": {
+        "analytics": "dbcb31e5-2d04-446e-bfe8-5d6bc056c782"
     }
 }
